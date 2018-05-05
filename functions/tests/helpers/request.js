@@ -28,7 +28,10 @@ module.exports = function() {
     });
 
     let deferred = defer();
-    res.on('end', () => deferred.resolve(res));
+    res.on('end', () => {
+      let data = res._getData();
+      deferred.resolve({ json: data, res });
+    });
     fn(req, res);
 
     return deferred.promise;

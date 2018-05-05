@@ -1,3 +1,3 @@
-export default async () => {
+export default app => async () => {
   return { ok: true };
 }
