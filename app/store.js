@@ -9,7 +9,7 @@ const options = {
     databaseURL: "https://index65-dev.firebaseio.com",
     projectId: "index65-dev",
     storageBucket: "index65-dev.appspot.com",
-    messagingSenderId: "93010984533"
+    // messagingSenderId: "93010984533"
   },
   firestore: {
     persistenceEnabled: true

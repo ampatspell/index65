@@ -1,3 +1,4 @@
 export default app => async () => {
-  return { ok: true };
+  let { name, version } = require('../../package.json');
+  return { name, version };
 }

@@ -1,5 +1,6 @@
 {
-  "name": "functions",
+  "name": "index65-functions",
+  "version": "0.0.0",
   "description": "Cloud Functions for Firebase",
   "scripts": {
     "lint": "eslint src",

@@ -25,7 +25,8 @@ describe('sanity', () => {
     let { json } = await request(this.app.handlers.version, { method: 'POST', body: { data: {} } });
     assert.deepEqual(json, {
       result: {
-        ok: true
+        name: 'index65-functions',
+        version: require('../package.json').version
       }
     });
   });
