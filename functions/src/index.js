@@ -1,10 +1,13 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
+import Application from './app';
 
 admin.initializeApp();
 
+let app = new Application(admin, functions);
+
 exports.functions = {
-  hello: functions.https.onCall(async (data, context) => {
-    return { ok: true };
-  })
+  version: app.handlers.version
 };
+
+Object.defineProperty(exports, '_app', { value: app });

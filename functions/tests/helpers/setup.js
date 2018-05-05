@@ -6,10 +6,11 @@ module.exports = function() {
 
   const setup = ctx => {
     let test = buildTest();
-    let app = buildApp();
+    let { index, app } = buildApp();
     let admin = buildAdmin();
 
     ctx.test = test;
+    ctx.index = index;
     ctx.app = app;
     ctx.admin = admin;
     ctx.firestore = admin.firestore();

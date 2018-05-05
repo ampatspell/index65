@@ -1,6 +1,7 @@
 module.exports = function() {
 
-  let dist = require('../../dist');
-  
-  return dist;
+  let index = require('../../dist');
+  let app = index._app;
+
+  return { index, app };
 }
