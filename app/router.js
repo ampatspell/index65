@@ -7,6 +7,10 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route('session', function() {
+    this.route('new');
+    this.route('delete');
+  });
 });
 
 export default Router;

@@ -1,0 +1,54 @@
+.app-header {
+  // .noselect;
+  // .clearfix;
+  height: 60px;
+  font-size: 15px;
+  overflow: hidden;
+  padding: 0 20px;
+  white-space-collapse: discard;
+  > .item {
+    float: left;
+    height: 60px;
+    line-height: 60px;
+    margin-right: 10px;
+    &.action {
+      // .pointer;
+    }
+    &:after {
+      // .ion;
+      // content: @ionicon-var-android-more-vertical;
+      color: #ddd;
+      margin-left: 10px;
+    }
+    &:last-child {
+      &:after {
+        display: none;
+      }
+    }
+    &.logo {
+      font-size: 18px;
+      margin-left: -20px;
+      padding-left: 20px;
+    }
+    &.optional {
+      // @media @mobile {
+      //   display: none;
+      // }
+    }
+  }
+}
+
+.breadcrumb-prev-next {
+  display: inline-block;
+  line-height: 60px;
+  > .app-icon {
+    display: inline-block;
+    padding: 10px;
+    &.action {
+      // .pointer;
+    }
+    &.no-action {
+      color: #aaa;
+    }
+  }
+}
