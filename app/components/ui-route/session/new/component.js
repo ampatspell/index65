@@ -4,7 +4,7 @@ import { model } from 'index65/util/model';
 
 export default Component.extend({
 
-  model: model('session/sign-in'),
+  model: model({ name: 'session/sign-in' }),
 
   actions: {
     save() {

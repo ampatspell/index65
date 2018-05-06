@@ -1,6 +1,7 @@
 import Store from 'ember-cli-zuglet/store';
 import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
+import { model } from 'index65/util/model';
 
 const options = {
   firebase: {
@@ -16,25 +17,18 @@ const options = {
   }
 };
 
-const state = () => computed(function() {
-  return this.models.model('state', { store: this });
-}).readOnly();
-
 export default Store.extend({
 
   options,
 
   models: service(),
-  state: state(),
+  user: null,
 
   restore() {
-    return this.state.restore();
   },
 
   async restoreUser(user) {
-    let { uid } = user;
-    let doc = await this.collection('users').doc(uid).load({ optional: true });
-    console.log(doc.serialized);
+    this.set('user', await this.models.model('user', { user }).restore());
   }
 
 });

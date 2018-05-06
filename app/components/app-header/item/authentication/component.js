@@ -6,10 +6,10 @@ export default Component.extend({
 
   optional: true,
 
-  email: readOnly('store.auth.user.email'),
+  user: readOnly('store.user'),
 
   click() {
-    if(this.email) {
+    if(this.user) {
       this.router.transitionTo('session');
     } else {
       this.router.transitionTo('session.new');

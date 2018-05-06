@@ -1,5 +1,8 @@
 import { computed } from '@ember/object';
 
-export const model = (name, props) => computed(function() {
-  return this.models.model(name, props);
-}).readOnly();
+export const model = (...args) => {
+  let opts = args.pop();
+  return computed(...args, function() {
+    return this.models.model(opts.name, opts.props);
+  }).readOnly();
+}
