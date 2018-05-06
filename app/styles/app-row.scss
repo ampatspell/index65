@@ -1,0 +1,76 @@
+.app-row {
+  @include container();
+  // .pointer;
+  // .noselect;
+  // .ellipsis;
+  height: 44px;
+  line-height: 44px;
+  font-size: 18px;
+  border-top: 1px solid $border-color;
+  &:last-child {
+    border-bottom: 1px solid $border-color;
+  }
+  &.invalid {
+    background: fadeout($invalid-color, 20%);
+    color: #fff;
+    border-top: 1px solid rgba(255, 255, 255, 0.9);
+  }
+  &.noborder {
+    border-top: none;
+    border-bottom: none;
+  }
+  &:hover {
+    background: $hover-background-color;
+  }
+  &.invalid {
+    &:hover {
+      background: fadeout($invalid-color, 15%);
+    }
+  }
+  &.no-action {
+    cursor: default;
+    &:hover {
+      background: none;
+    }
+    &.invalid {
+      &:hover {
+        background: $invalid-color;
+      }
+    }
+  }
+  &.disabled {
+    color: fadeout($text-color, 50%);
+    cursor: default;
+    &:hover {
+      background: none;
+    }
+  }
+  // .clearfix;
+  > .app-icon {
+    display: block;
+    float: left;
+    font-size: 26px;
+    height: 44px;
+    line-height: 44px;
+    margin-right: 10px;
+  }
+  > .key {
+    font-size: 12px;
+    &:after {
+      content: ": ";
+    }
+  }
+  > .value {
+    display: inline-block;
+    margin-right: 5px;
+    &.placeholder {
+      color: #aaa;
+    }
+  }
+  &.min-45 {
+    > .value {
+      min-width: 45px;
+      margin-right: 0;
+    }
+  }
+}

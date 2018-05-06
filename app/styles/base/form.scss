@@ -1,0 +1,51 @@
+.app-form {
+  width: 300px;
+  margin-bottom: 20px;
+  &.wide {
+    width: 100%;
+    max-width: 1024px;
+  }
+  // @media @mobile, @tablet {
+  //   width: 100%;
+  // }
+}
+
+input[type='text'],
+input[type='password'] {
+  display: block;
+  width: 100%;
+  font-family: $font-family;
+  outline: none;
+  margin-bottom: 5px;
+  -webkit-appearance: none;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  font-size: 17px;
+  padding: 11px 10px 10px 10px;
+  &.narrow {
+    width: 300px;
+    // @media @mobile, @tablet {
+    //   width: 100%;
+    // }
+  }
+}
+
+button,
+input[type='submit'],
+input[type='button'] {
+  -webkit-appearance: none;
+  border: 1px solid lighten(#ddd, 3%);
+  background: lighten(#ddd, 5%);
+  font-family: $font-family;
+  font-size: 15px;
+  padding: 12px 15px 10px 15px;
+  outline: none;
+  // @media @mobile, @tablet {
+  //   width: 100%;
+  //   margin-bottom: 5px;
+  // }
+  &.secondary {
+    border: 1px solid lighten(#ddd, 8%);
+    background: lighten(#ddd, 10%);
+  }
+}

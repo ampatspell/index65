@@ -1,0 +1,17 @@
+{{#if icon}}
+  {{app-icon name=icon}}
+{{/if}}
+{{#if key}}
+  {{app-span value=key class="key"}}
+{{/if}}
+{{#if value}}
+  {{#if format}}
+    {{app-span value=(l format value) class="value"}}
+  {{else}}
+    {{app-span value=value class="value"}}
+  {{/if}}
+{{else if placeholder}}
+  {{app-span value=placeholder class="value placeholder"}}
+{{/if}}
+
+{{yield}}

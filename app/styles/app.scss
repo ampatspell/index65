@@ -1,7 +1,25 @@
 @import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700&subset=latin,latin-ext,cyrillic-ext");
+@import url("https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css");
 
 $font-family: 'Ubuntu Mono';
 $text-color: #333;
 
+$hover-background-color: fadeout(#000, 99%);
+$border-color: fadeout(#000, 97%);
+$invalid-color: #ba1e16;
+
+
+@mixin container() {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 @import "base/reset";
 @import "base/body";
+@import "base/form";
+@import "app-header";
+@import "app-row";
+
+.app-block {
+  @include container();
+}
