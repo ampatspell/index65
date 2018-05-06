@@ -6,6 +6,7 @@ module.exports = function(sender) {
   const setup = () => {
     let app = initializeApp();
     let admin = initializeAdmin();
+
     sender.app = app;
     sender.admin = admin;
     sender.firestore = app.firestore();
@@ -14,16 +15,18 @@ module.exports = function(sender) {
 
     sender.signIn = require('./sign-in')(sender);
     sender.signOut = require('./sign-out')(sender);
-
-    return () => app.delete();
+    
+    return async () => {
+      await app.delete();
+    };
   }
 
   beforeEach(() => {
     sender.cleanup = setup(sender);
   });
 
-  afterEach(() => {
-    sender.cleanup();
+  afterEach(async () => {
+    await sender.cleanup();
   });
 
 }

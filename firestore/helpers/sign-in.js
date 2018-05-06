@@ -4,6 +4,10 @@ module.exports = function(ctx) {
     'admin': {
       email: 'admin@gmail.com',
       roles: [ 'admin' ]
+    },
+    'zeeba': {
+      email: 'zeeba@gmail.com',
+      roles: []
     }
   };
 

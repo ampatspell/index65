@@ -15,4 +15,9 @@ describe('source', () => {
     await this.insert();
   });
 
+  it('prevents insert if user is logged in', async () => {
+    await this.signIn('zeeba');
+    await this.insert();
+  });
+
 });
