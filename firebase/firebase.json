@@ -5,8 +5,8 @@
   },
   "functions": {
     "predeploy": [
-      "npm --prefix firebase run dist",
-      "npm --prefix functions install"
+      "npm --prefix \"$RESOURCE_DIR\" run lint",
+      "npm --prefix \"$RESOURCE_DIR\" run build"
     ]
   },
   "hosting": {
