@@ -26,8 +26,8 @@ package.json.ember-try
 
 /functions/node_modules/
 /functions/dist/
-/functions/service-account-key.json
-
 /firestore/node_modules
 
 firebase-debug.log
+
+/service-account-key.json

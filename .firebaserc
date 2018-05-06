@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "index65-dev"
+    "default": "index65-dev",
+    "test": "index65-test"
   }
 }

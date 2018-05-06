@@ -10,7 +10,7 @@
     ],
     "ignore": [
       "src/**",
-      "tests/**"
+      "test/**"
     ]
   },
   "hosting": {

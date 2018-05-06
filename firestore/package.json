@@ -2,12 +2,13 @@
   "name": "firestore",
   "private": true,
   "scripts": {
-    "test": "mocha tests --reporter spec --slow 10000 --no-timeouts",
+    "test": "mocha --reporter spec --slow 10000 --no-timeouts --exit",
     "start": "npm run test",
     "deploy": "firebase deploy --only firestore"
   },
   "devDependencies": {
     "firebase": "^4.13.1",
+    "firebase-admin": "^5.12.0",
     "mocha": "^5.1.1"
   }
 }

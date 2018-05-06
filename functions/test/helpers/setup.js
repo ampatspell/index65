@@ -16,6 +16,7 @@ module.exports = function() {
     ctx.firestore = admin.firestore();
     ctx.storage = admin.storage();
     ctx.bucket = ctx.storage.bucket();
+    ctx.auth = admin.auth();
 
     return () => test.cleanup();
   }

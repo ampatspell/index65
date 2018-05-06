@@ -10,7 +10,7 @@
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
-    "test": "mocha tests --reporter spec --slow 10000 --no-timeouts",
+    "test": "mocha --reporter spec --slow 10000 --no-timeouts --exit",
     "watch": "watch 'npm run build' src"
   },
   "main": "dist/index.js",
