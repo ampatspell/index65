@@ -14,11 +14,16 @@ module.exports = function(ctx) {
   let storage = app.storage();
   let auth = app.auth();
 
+  let signIn = require('./client/sign-in')(ctx);
+  let signOut = require('./client/sign-out')(ctx);
+
   ctx.client = {
     app,
     firestore,
     storage,
-    auth
+    auth,
+    signIn,
+    signOut
   };
 
   return () => app.delete();

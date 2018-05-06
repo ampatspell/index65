@@ -1,16 +1,15 @@
-const setup = require('../helpers/setup');
+const setup = require('./helpers/setup');
 const assert = require('assert');
-const assign = Object.assign;
 
 describe('rules / user', () => {
   setup(this);
 
   beforeEach(() => {
-    this.uid = async name => (await this.signIn(name)).uid;
-    this.get = async uid => (await this.firestore.doc(`users/${uid}`).get()).data();
+    this.uid = async name => (await this.client.signIn(name)).uid;
+    this.get = async uid => (await this.client.firestore.doc(`users/${uid}`).get()).data();
     this.query = async () => {
       try {
-        return await this.firestore.collection('users').get();
+        return await this.client.firestore.collection('users').get();
       } catch(err) {
         if(err.code === 'permission-denied') {
           return null;
@@ -31,13 +30,13 @@ describe('rules / user', () => {
   });
 
   it('does not allow anonymous to query', async () => {
-    await this.signOut();
+    await this.client.signOut();
     let docs = await this.query();
     assert.equal(docs, null);
   });
 
   it('allows admins to query', async () => {
-    await this.signIn('admin');
+    await this.client.signIn('admin');
     let docs = await this.query();
     assert.ok(docs.size > 0);
   });

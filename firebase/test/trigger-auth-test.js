@@ -11,7 +11,7 @@ describe('trigger / auth', () => {
     });
 
     it('inserts user document', async () => {
-      let ref = this.firestore.doc('users/foobar');
+      let ref = this.admin.firestore.doc('users/foobar');
       await ref.delete();
       await this.onCreate({ uid: 'foobar', email: 'zeeba@gmail.com', displayName: 'zeeba' });
 
