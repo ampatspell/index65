@@ -7,14 +7,10 @@
     "predeploy": [
       "npm --prefix \"$RESOURCE_DIR\" run lint",
       "npm --prefix \"$RESOURCE_DIR\" run build"
-    ],
-    "ignore": [
-      "src/**",
-      "test/**"
     ]
   },
   "hosting": {
-    "public": "dist",
+    "public": "../dist",
     "ignore": [
       "firebase.json",
       "**/.*",

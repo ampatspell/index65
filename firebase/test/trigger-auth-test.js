@@ -1,7 +1,7 @@
 const setup = require('./helpers/setup');
 const assert = require('assert');
 
-describe('auth', () => {
+describe('trigger / auth', () => {
   setup(this);
 
   describe('onCreate', () => {

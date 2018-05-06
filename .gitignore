@@ -28,6 +28,8 @@ package.json.ember-try
 /functions/dist/
 /firestore/node_modules
 
+/firebase/node_modules/
+
 firebase-debug.log
 
 /service-account-key.json

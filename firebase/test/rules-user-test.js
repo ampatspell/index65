@@ -2,7 +2,7 @@ const setup = require('../helpers/setup');
 const assert = require('assert');
 const assign = Object.assign;
 
-describe('user', () => {
+describe('rules / user', () => {
   setup(this);
 
   beforeEach(() => {
