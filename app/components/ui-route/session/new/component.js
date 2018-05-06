@@ -1,11 +1,10 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
+import { model } from 'index65/util/model';
 
 export default Component.extend({
 
-  model: computed(function() {
-    return this.models.model('session/sign-in');
-  }).readOnly(),
+  model: model('session/sign-in'),
 
   actions: {
     save() {

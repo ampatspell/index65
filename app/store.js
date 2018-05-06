@@ -29,6 +29,12 @@ export default Store.extend({
 
   restore() {
     return this.state.restore();
+  },
+
+  async restoreUser(user) {
+    let { uid } = user;
+    let doc = await this.collection('users').doc(uid).load({ optional: true });
+    console.log(doc.serialized);
   }
 
 });
