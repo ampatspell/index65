@@ -24,10 +24,10 @@ package.json.ember-try
 
 .DS_Store
 
-/functions/node_modules/
-/functions/dist/
-/firestore/node_modules
-
 firebase-debug.log
 
-/service-account-key.json
+/firebase/functions/dist
+/firebase/functions/node_modules
+/firebase/public
+
+/firebase/service-account-key.json

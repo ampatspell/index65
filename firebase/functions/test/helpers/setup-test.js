@@ -1,4 +1,4 @@
-module.exports = function() {
+module.exports = function(ctx) {
 
   const test = require('firebase-functions-test');
   const path = require('path');
@@ -8,9 +8,9 @@ module.exports = function() {
 
   let instance = test(config, account);
 
-  instance.mockConfig({
-  });
+  instance.mockConfig({});
 
-  return instance;
+  ctx.test = instance;
 
+  return () => instance.cleanup();
 }

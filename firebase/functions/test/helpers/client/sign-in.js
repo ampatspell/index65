@@ -15,7 +15,7 @@ module.exports = function(ctx) {
 
   const signUp = async email => {
     try {
-      return await ctx.auth.createUserWithEmailAndPassword(email, password);
+      return await ctx.client.auth.createUserWithEmailAndPassword(email, password);
     } catch(err) {
       if(err.code === 'auth/email-already-in-use') {
         return;
@@ -25,12 +25,12 @@ module.exports = function(ctx) {
   };
 
   const signIn = async email => {
-    return await ctx.auth.signInWithEmailAndPassword(email, password);
+    return await ctx.client.auth.signInWithEmailAndPassword(email, password);
   };
 
   const insertDoc = async (uid, displayName, info) => {
     let { roles, email } = info;
-    await ctx.admin.firestore().doc(`users/${uid}`).set({ email, displayName, roles });
+    await ctx.admin.firestore.doc(`users/${uid}`).set({ email, displayName, roles });
   };
 
   return async name => {
@@ -43,4 +43,4 @@ module.exports = function(ctx) {
     insertDoc(user.uid, name, info);
     return user;
   }
-};
+}

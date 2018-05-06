@@ -1,7 +1,7 @@
 const setup = require('./helpers/setup');
 const assert = require('assert');
 
-describe('auth', () => {
+describe('trigger / auth', () => {
   setup(this);
 
   describe('onCreate', () => {
@@ -11,7 +11,7 @@ describe('auth', () => {
     });
 
     it('inserts user document', async () => {
-      let ref = this.firestore.doc('users/foobar');
+      let ref = this.admin.firestore.doc('users/foobar');
       await ref.delete();
       await this.onCreate({ uid: 'foobar', email: 'zeeba@gmail.com', displayName: 'zeeba' });
 

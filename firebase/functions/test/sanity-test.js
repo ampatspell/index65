@@ -17,7 +17,7 @@ describe('sanity', () => {
     let { json } = await request(this.app.handlers.version, { method: 'POST', body: { data: {} } });
     assert.deepEqual(json, {
       result: {
-        name: 'index65-functions',
+        name: 'index65-firebase',
         version: require('../package.json').version
       }
     });
