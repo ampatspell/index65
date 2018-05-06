@@ -1,6 +1,6 @@
 module.exports = function(ctx) {
 
-  let index = require('../../functions/dist');
+  let index = require('../../dist');
   let app = index._app;
 
   ctx.index = index;

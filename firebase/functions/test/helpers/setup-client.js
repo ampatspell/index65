@@ -2,11 +2,11 @@ module.exports = function(ctx) {
 
   const firebase = require('firebase');
 
-  require('firebase/storage');
   require('firebase/firestore');
   require('firebase/functions');
+  require('firebase/storage');
 
-  let app = firebase.initializeApp(require('../../config.json'), 'client');
+  let app = firebase.initializeApp(require('../../../config.json'), 'client');
 
   let firestore = app.firestore();
   firestore.settings({ timestampsInSnapshots: true });
