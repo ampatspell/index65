@@ -15,10 +15,11 @@ module.exports = function(sender) {
 
     sender.signIn = require('./sign-in')(sender);
     sender.signOut = require('./sign-out')(sender);
-    
-    return async () => {
-      await app.delete();
-    };
+
+    return () => Promise.all([
+      admin.delete(),
+      app.delete()
+    ]);
   }
 
   beforeEach(() => {

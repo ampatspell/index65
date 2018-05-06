@@ -15,9 +15,14 @@ describe('source', () => {
     await this.insert();
   });
 
-  it('prevents insert if user is logged in', async () => {
+  it('prevents insert if user is not admin', async () => {
     await this.signIn('zeeba');
-    await this.insert();
+    try {
+      await this.insert();
+      assert.ok(false, 'should throw');
+    } catch(err) {
+      assert.equal(err.code, 'permission-denied');
+    }
   });
 
 });

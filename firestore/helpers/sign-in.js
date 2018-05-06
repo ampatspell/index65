@@ -7,7 +7,7 @@ module.exports = function(ctx) {
     },
     'zeeba': {
       email: 'zeeba@gmail.com',
-      roles: []
+      roles: [ ]
     }
   };
 
@@ -31,7 +31,7 @@ module.exports = function(ctx) {
   const insertDoc = async (uid, displayName, info) => {
     let { roles, email } = info;
     await ctx.admin.firestore().doc(`users/${uid}`).set({ email, displayName, roles });
-  }
+  };
 
   return async name => {
     let info = mapping[name];

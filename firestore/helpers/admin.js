@@ -6,10 +6,10 @@ module.exports = function() {
 
   const admin = require('firebase-admin');
 
-  admin.initializeApp({
+  let app = admin.initializeApp({
     credential: admin.credential.cert(account),
     databaseURL: config.databaseURL
   });
 
-  return admin;
+  return app;
 };
