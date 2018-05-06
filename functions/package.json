@@ -10,7 +10,8 @@
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
-    "test": "npm run build && mocha tests --reporter spec --slow 10000 --no-timeouts --exit"
+    "test": "mocha tests --reporter spec --slow 10000 --no-timeouts",
+    "watch": "watch 'npm run build' src"
   },
   "main": "dist/index.js",
   "dependencies": {
@@ -26,7 +27,8 @@
     "eslint-plugin-promise": "^3.6.0",
     "firebase-functions-test": "^0.1.2",
     "mocha": "^5.1.1",
-    "node-mocks-http": "^1.5.8"
+    "node-mocks-http": "^1.5.8",
+    "watch": "^1.0.2"
   },
   "private": true
 }
