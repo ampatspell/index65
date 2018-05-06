@@ -1,0 +1,13 @@
+{
+  "name": "firestore",
+  "private": true,
+  "scripts": {
+    "test": "mocha tests --reporter spec --slow 10000 --no-timeouts",
+    "start": "npm run test",
+    "deploy": "firebase deploy --only firestore"
+  },
+  "devDependencies": {
+    "firebase": "^4.13.1",
+    "mocha": "^5.1.1"
+  }
+}
