@@ -29,6 +29,7 @@ package.json.ember-try
 /firestore/node_modules
 
 /firebase/node_modules/
+/firebase/functions/dist/
 
 firebase-debug.log
 
