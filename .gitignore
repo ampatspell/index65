@@ -28,6 +28,6 @@ firebase-debug.log
 
 /firebase/functions/dist
 /firebase/functions/node_modules
-/firebase/functions/public
+/firebase/public
 
 /firebase/service-account-key.json
