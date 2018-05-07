@@ -1,5 +1,5 @@
-import Service, { inject as service } from '@ember/service';
-import { assert } from '@ember/debug';
+import Service from 'requirements/service';
+import { inject as service } from '@ember/service';
 
 const rules = {
   'logged-in': ({ user }) => user ? null : 'login',
@@ -8,16 +8,17 @@ const rules = {
 
 export default Service.extend({
 
+  rules,
+
   store: service(),
 
-  async validateAsync(name, model) {
-    let rule = rules[name];
-    assert(`rule '${name}' not defined`, !!rule);
-    let context = {
-      store: this.store,
-      user:  this.store.user
+  context() {
+    let store = this.store;
+    let user = store.user;
+    return {
+      store,
+      user
     };
-    return await rule(context, model);
   }
 
 });
