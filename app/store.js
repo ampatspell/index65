@@ -26,7 +26,6 @@ export default Store.extend({
   },
 
   async restoreUser(user) {
-    console.log('restoreUser', user, user && user.uid);
     let current = this.user;
     if(current && user && user.uid === current.uid) {
       current.set('user', user);
