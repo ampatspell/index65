@@ -1,3 +1,5 @@
 {{#app-section}}
   {{app-row icon='log-out' value=(l 'Sign out') action=(action 'logout')}}
 {{/app-section}}
+
+{{log user.isLoading user.exists}}

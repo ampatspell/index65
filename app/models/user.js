@@ -8,6 +8,9 @@ export default Model.extend({
 
   email: readOnly('user.email'),
 
+  isLoading: readOnly('doc.isLoading'),
+  exists: readOnly('doc.exists'),
+
   async restore() {
     this.setProperties(this.store.collection('users').doc(this.user.uid).observe());
     return this;
