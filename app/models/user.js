@@ -9,8 +9,13 @@ export default Model.extend({
   email: readOnly('user.email'),
 
   async restore() {
-    this.set('doc', await this.store.collection('users').doc(this.user.uid).load({ optional: true }));
+    this.setProperties(this.store.collection('users').doc(this.user.uid).observe());
     return this;
+  },
+
+  willDestroy() {
+    this._super(...arguments);
+    this.cancel();
   }
 
 });
