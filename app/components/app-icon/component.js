@@ -15,6 +15,7 @@ const mapping = {
   'back':          'ion-ios-arrow-back',
   'year':          'ion-ios-clock-outline',
   'upload':        'ion-upload',
+  'error':         'ion-close-circled'
 };
 
 export default Component.extend({

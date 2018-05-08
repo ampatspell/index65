@@ -1,10 +1,6 @@
 import Service from 'requirements/service';
 import { inject as service } from '@ember/service';
-
-const rules = {
-  'logged-in': ({ user }) => user ? null : 'login',
-  'anonymous': ({ user }) => user ? 'logged-in' : null
-};
+import rules from '../requirements';
 
 export default Service.extend({
 

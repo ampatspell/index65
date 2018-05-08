@@ -1,5 +1,14 @@
 import Model from './model';
-import { readOnly } from '@ember/object/computed';
+import { computed } from '@ember/object';
+import { readOnly, or } from '@ember/object/computed';
+
+const hasRole = name => computed('doc.data.roles.[]', function() {
+  let roles = this.get('doc.data.roles');
+  if(!roles) {
+    return;
+  }
+  return roles.find(role => role === name);
+}).readOnly();
 
 export default Model.extend({
 
@@ -8,17 +17,19 @@ export default Model.extend({
 
   email: readOnly('user.email'),
 
+  exists:    readOnly('doc.exists'),
   isLoading: readOnly('doc.isLoading'),
-  exists: readOnly('doc.exists'),
+
+  roles:     readOnly('doc.data.roles'),
+  isAdmin:   hasRole('admin'),
+  isMember:  hasRole('member'),
+
+  isAdminOrMember: or('isAdmin', 'isMember'),
 
   async restore() {
-    this.setProperties(this.store.collection('users').doc(this.user.uid).observe());
+    let ref = this.store.collection('users').doc(this.user.uid);
+    this.set('doc', await ref.load());
     return this;
-  },
-
-  willDestroy() {
-    this._super(...arguments);
-    this.cancel();
   }
 
 });

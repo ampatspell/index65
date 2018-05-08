@@ -23,3 +23,16 @@ $invalid-color: #ba1e16;
 .app-block {
   @include container();
 }
+
+.comma-list {
+  > .item {
+    &:after {
+      content: ', ';
+    }
+    &:last-child {
+      &:after {
+        content: '';
+      }
+    }
+  }
+}
