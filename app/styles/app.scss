@@ -8,12 +8,7 @@ $hover-background-color: fadeout(#000, 99%);
 $border-color: fadeout(#000, 97%);
 $invalid-color: #ba1e16;
 
-
-@mixin container() {
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
+@import "mixins";
 @import "base/reset";
 @import "base/body";
 @import "base/form";

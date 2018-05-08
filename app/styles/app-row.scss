@@ -1,8 +1,8 @@
 .app-row {
   @include container();
-  // .pointer;
-  // .noselect;
-  // .ellipsis;
+  @include noselect();
+  @include ellipsis();
+  cursor: pointer;
   height: 44px;
   line-height: 44px;
   font-size: 18px;

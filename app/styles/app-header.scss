@@ -1,22 +1,22 @@
 .app-header {
-  // .noselect;
-  // .clearfix;
+  @include noselect();
   height: 60px;
   font-size: 15px;
   overflow: hidden;
   padding: 0 20px;
   white-space-collapse: discard;
+  display: flex;
+  flex-direction: row;
   > .item {
-    float: left;
     height: 60px;
     line-height: 60px;
     margin-right: 10px;
     &.action {
-      // .pointer;
+      cursor: pointer;
     }
     &:after {
-      // .ion;
-      // content: @ionicon-var-android-more-vertical;
+      @include ion();
+      content: $ionicon-var-android-more-vertical;
       color: #ddd;
       margin-left: 10px;
     }
