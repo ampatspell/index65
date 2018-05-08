@@ -7,11 +7,18 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+
   this.route('session', function() {
     this.route('new');
     this.route('delete');
     this.route('denied');
   });
+
+  this.route('sources', function() {
+    this.route('source', { path: ':source_id' }, function() {
+    });
+  });
+
 });
 
 export default Router;
