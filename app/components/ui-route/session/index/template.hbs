@@ -1,4 +1,5 @@
 {{#app-section}}
+
   {{#if user.isLoading}}
     {{app-row icon='roles' value=(l 'Loading…')}}
   {{else}}
@@ -15,8 +16,7 @@
       {{app-row icon='error' value=(l 'No user information available')}}
     {{/if}}
   {{/if}}
-{{/app-section}}
 
-{{#app-section}}
   {{app-row icon='log-out' value=(l 'Sign out') action=(action 'logout')}}
+
 {{/app-section}}

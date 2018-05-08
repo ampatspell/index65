@@ -1,0 +1,5 @@
+{{#each sources.docs as |source|}}
+  {{app-row icon="collection" value=source.data.name action=(action 'source' source)}}
+{{else}}
+  {{app-row icon='error' value='No sources created yet'}}
+{{/each}}
