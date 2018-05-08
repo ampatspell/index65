@@ -28,8 +28,18 @@ export default Model.extend({
 
   async restore() {
     let ref = this.store.collection('users').doc(this.user.uid);
-    this.set('doc', await ref.load());
+    let { doc, cancel, promise } = ref.observe();
+    this.setProperties({
+      doc,
+      cancel
+    });
+    await promise;
     return this;
+  },
+
+  willDestroy() {
+    this.cancel();
+    this._super(...arguments);
   }
 
 });
