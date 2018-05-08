@@ -30,6 +30,11 @@ service cloud.firestore {
     match /sources/{source} {
       allow read: if isMember();
       allow write: if isAdmin();
+
+      match /collections/{collection} {
+        allow read: if isMember();
+        allow write: if isAdmin();
+      }
     }
 
   }
