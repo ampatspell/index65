@@ -1,5 +1,6 @@
 import Store from 'ember-cli-zuglet/store';
 import { inject as service } from '@ember/service';
+import { model } from './util/model';
 
 const options = {
   firebase: {
@@ -21,6 +22,8 @@ export default Store.extend({
 
   models: service(),
   user: null,
+
+  sources: model({ name: 'sources' }),
 
   restore() {
   },
