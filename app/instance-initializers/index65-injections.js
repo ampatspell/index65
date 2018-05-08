@@ -1,5 +1,6 @@
 export default {
   name: 'index65:injections',
+  after: 'index65:store',
   initialize(app) {
     app.inject('component', 'router', 'service:router');
     app.inject('component', 'models', 'service:models');
