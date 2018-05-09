@@ -7,6 +7,6 @@ export const model = (...args) => {
     if(typeof props === 'function') {
       props = props.call(this);
     }
-    return this.models.model(opts.name, props);
+    return this.models.create(opts.name, props);
   }).readOnly();
 }
