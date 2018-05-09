@@ -48,6 +48,7 @@
   },
   "ember-addon": {
     "paths": [
+      "lib/models",
       "lib/requirements"
     ]
   }

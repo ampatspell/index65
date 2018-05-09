@@ -32,7 +32,7 @@ export default Store.extend({
     } else {
       let next = null;
       if(user) {
-        next = await this.models.model('user', { user }).restore();
+        next = await this.models.create('user', { user }).restore();
       }
       this.set('user', next);
       current && current.destroy();

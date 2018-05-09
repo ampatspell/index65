@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import Model, { load } from 'index65/mixins/route/model';
+import Model, { load } from 'models/mixins/route';
 
 export default Route.extend(Model, {
 
