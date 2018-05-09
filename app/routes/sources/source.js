@@ -4,7 +4,7 @@ export default Route.extend({
 
   model(params) {
     let id = params.source_id;
-    return this.store.sources.doc(id);
+    return this.modelFor('sources').sources.content.findBy('id', id);
   }
 
 });

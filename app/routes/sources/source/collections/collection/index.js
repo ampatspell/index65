@@ -1,17 +1,12 @@
 import Route from '@ember/routing/route';
-import { hash } from 'rsvp';
+import Model from 'index65/mixins/route/model';
 
-export default Route.extend({
+export default Route.extend(Model, {
 
-  model(params) {
+  model() {
     let source = this.modelFor('sources.source');
-    let collection = this.modelFor('sources.source.collections.collection').observe();
-    // TODO: destroy observer
-    return hash({
-      source,
-      collection,
-      _promise: collection.promise
-    });
+    let collection = this.modelFor('sources.source.collections.collection');
+    return this.load('route/sources/source/collections/collection/index', { collection });
   }
 
 });
