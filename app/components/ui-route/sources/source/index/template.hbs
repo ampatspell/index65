@@ -1,3 +1,3 @@
-{{#each source.collections.docs as |doc|}}
+{{#each collections.query.content as |doc|}}
   {{app-row icon="box" value=doc.data.name action=(action 'collection' doc)}}
 {{/each}}

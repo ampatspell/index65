@@ -16,6 +16,10 @@ Router.map(function() {
 
   this.route('sources', function() {
     this.route('source', { path: ':source_id' }, function() {
+      this.route('collections', function() {
+        this.route('collection', { path: ':collection_id' }, function() {
+        });
+      });
     });
   });
 

@@ -5,7 +5,7 @@ export default Component.extend({
 
   actions: {
     collection(doc) {
-      console.log(doc+'');
+      this.router.transitionTo('sources.source.collections.collection', doc);
     }
   }
 

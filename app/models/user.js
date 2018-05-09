@@ -13,9 +13,11 @@ const hasRole = name => computed('doc.data.roles.[]', function() {
 export default Model.extend({
 
   user: null,
-  doc: null,
-
+  uid: readOnly('user.uid'),
   email: readOnly('user.email'),
+
+  observer: null,
+  doc: readOnly('observer.doc'),
 
   exists:    readOnly('doc.exists'),
   isLoading: readOnly('doc.isLoading'),
@@ -28,17 +30,14 @@ export default Model.extend({
 
   async restore() {
     let ref = this.store.collection('users').doc(this.user.uid);
-    let { doc, cancel, promise } = ref.observe();
-    this.setProperties({
-      doc,
-      cancel
-    });
-    await promise;
+    let observer = ref.observe();
+    this.setProperties({ observer });
+    await observer.promise;
     return this;
   },
 
   willDestroy() {
-    this.cancel();
+    this.observer.cancel();
     this._super(...arguments);
   }
 
