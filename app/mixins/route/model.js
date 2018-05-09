@@ -1,22 +1,37 @@
 import Mixin from '@ember/object/mixin';
 import { resolve } from 'rsvp';
-import { assign } from '@ember/polyfills';
 import { get } from '@ember/object';
-import { inject as service } from '@ember/service';
+import { getOwner } from '@ember/application';
 
-const key = '__route_ownership';
+export const load = props => function(params) {
+  return resolve(this._super(...arguments)).then(() => this.load(props, params));
+};
+
+const key = '__route_name';
 
 export default Mixin.create({
 
-  models: service(),
-
-  create(name, props) {
+  create(props, params) {
     let routeName = this.routeName;
-    return this.models.model(name, assign({ [key]: routeName }, props));
+    let modelFullName = `model:route/${routeName.replace(/\./g, '/')}`;
+
+    let owner = getOwner(this);
+
+    let factory = owner.factoryFor(modelFullName);
+    if(!factory) {
+      let extended = owner.factoryFor('model:route').class.extend(props).reopenClass({ [key]: routeName });
+      owner.register(modelFullName, extended);
+      factory = owner.factoryFor(modelFullName);
+    }
+
+    let instance = factory.create();
+    instance.didCreate(this, params);
+
+    return instance;
   },
 
-  load(name, props) {
-    let model = this.create(name, props);
+  load(props, params) {
+    let model = this.create(props, params);
     return resolve(model.load()).then(() => model);
   },
 
@@ -26,7 +41,7 @@ export default Mixin.create({
     if(!model) {
       return;
     }
-    if(get(model, key) !== this.routeName) {
+    if(get(model.constructor, key) !== this.routeName) {
       return;
     }
     model.destroy();
