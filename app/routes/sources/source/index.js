@@ -6,7 +6,7 @@ export default Route.extend(Model, {
   model: load({
     didCreate(route) {
       this.source = route.modelFor('sources.source');
-      this.collections = this.source.ref.collection('collections').query({ type: 'array' });
+      this.collections = this.source.ref.collection('collections').orderBy('name').query({ type: 'array' });
       this.observe(this.source);
       this.observe(this.collections);
     }
