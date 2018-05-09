@@ -4,7 +4,7 @@ import { get } from '@ember/object';
 import { getOwner } from '@ember/application';
 
 export const load = props => function(params) {
-  return resolve(this._super(...arguments)).then(() => this.load(props, params));
+  return this.load(props, params);
 };
 
 const key = '__route_name';

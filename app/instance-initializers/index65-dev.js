@@ -9,6 +9,8 @@ const experiments = app => {
   window.addGroup = (source, collection, identifier) => {
     return store.doc(`sources/${source}/collections/${collection}/groups/${identifier}`).new({ identifier }).save();
   };
+
+  window.observed = () => store.observed.map(model => model+'');
 }
 
 export default {
