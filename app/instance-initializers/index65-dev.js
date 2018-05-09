@@ -5,6 +5,10 @@ const experiments = app => {
   window.addCollection = (source, identifier, name) => {
     return store.doc(`sources/${source}/collections/${identifier}`).new({ name }).save();
   };
+
+  window.addGroup = (source, collection, identifier) => {
+    return store.doc(`sources/${source}/collections/${collection}/groups/${identifier}`).new({ identifier }).save();
+  };
 }
 
 export default {
