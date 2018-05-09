@@ -1,29 +1,15 @@
-* user (users/{uid})
-* source (sources/{source})
-* collection (sources/{source}/collections/{collection})
-* group (sources/{source}/collections/{collection}/groups/{group})
-
-``` javascript
-let state = app.lookup('service:state');
-```
+* nested route models has parent models as props
 
 ``` javascript
-let user = state.user;
-user.isAdmin
-user.email
+// sources/source/collections/collection/index
+export default Model.extend({
+
+  sources: null,
+  source: null,
+  collections: null,
+  collection: null,
+
+});
 ```
 
-``` javascript
-let sources = state.sources; // model
-sources.docs // [ doc, doc ]
-```
-
-``` javascript
-let collections = source.collections(); // model
-collections.docs // [ doc, doc ]
-```
-
-``` javascript
-let collection = state.collection(doc); // model
-
-```
+* mixin overrides model hook, forwards params and stuff to model. OR route does all the init
