@@ -4,9 +4,11 @@ module.exports = function(ctx) {
 
   let app = admin.app();
   let firestore = app.firestore();
+  let auth = app.auth();
 
   ctx.admin = {
     app,
+    auth,
     firestore
   };
 

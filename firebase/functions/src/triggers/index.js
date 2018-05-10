@@ -13,5 +13,6 @@ const buildHash = (app, hash) => Object.keys(hash).reduce((res, key) => {
 }, {});
 
 export default app => buildHash(app, {
-  auth: [ 'onCreate' ]
+  auth: [ 'onCreate' ],
+  user: [ 'onWrite' ]
 });

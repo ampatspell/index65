@@ -9,6 +9,7 @@ export default class App {
 
     this.config = functions.config();
     this.firestore = admin.firestore();
+    this.auth = admin.auth();
     this.storage = admin.storage();
     this.bucket = this.storage.bucket();
 

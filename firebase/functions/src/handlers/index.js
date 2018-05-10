@@ -10,5 +10,6 @@ const build = (app, names) => names.reduce((hash, name) => {
 }, {});
 
 export default app => build(app, [
-  'version'
+  'version',
+  'token'
 ]);
