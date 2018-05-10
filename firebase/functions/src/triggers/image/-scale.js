@@ -20,6 +20,12 @@ const getURL = async file => {
   return url;
 }
 
+const getSize = async tmp => {
+  let meta = await sharp(tmp).metadata();
+  let { width, height } = meta;
+  return { width, height };
+}
+
 // {
 //   original: { bucket, name },
 //   sizes: [ 1024, 200 ]
@@ -43,23 +49,36 @@ export default async (app, opts) => {
     let tmp = tempy();
     await sharp(original.tmp).resize(size, size).max().toFormat('jpeg').toFile(tmp);
 
-    let destination = path.join(path.dirname(original.name), `${size}`);
+    const upload = async () => {
+      let destination = path.join(path.dirname(original.name), `${size}`);
+      let [ file ] = await bucket.upload(tmp, {
+        destination,
+        metadata: {
+          contentType: 'image/jpg',
+        }
+      });
+      return file;
+    }
 
-    let [ file ] = await bucket.upload(tmp, {
-      destination,
-      metadata: {
-        contentType: 'image/jpg'
-      }
-    });
+    let [ file, metadata ] = await Promise.all([
+      upload(),
+      getSize(tmp)
+    ]);
 
     await rm(tmp);
 
-    response[`${size}x${size}`] = await getURL(file);
+    response[`${size}x${size}`] = {
+      url:  await getURL(file),
+      size: metadata
+    };
   }));
 
-  await rm(original.tmp);
+  await Promise.all([
+    getURL(original.file),
+    getSize(original.tmp)
+  ]).then(([ url, size ]) => response.original = { url, size });
 
-  response.original = await getURL(original.file);
+  await rm(original.tmp);
 
   return response;
 }

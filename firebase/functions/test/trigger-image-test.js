@@ -38,10 +38,32 @@ describe('trigger / image', () => {
 
       let snapshot = await this.ref.get();
       let data = snapshot.data();
-      assert.equal(data.identifier, 10);
-      assert.ok(data.storage.original);
-      assert.ok(data.storage['1024x1024']);
-      assert.ok(data.storage['200x200']);
+
+      const trimUrl = key => {
+        data.storage[key].url = data.storage[key].url.substr(0, 26);
+      };
+
+      trimUrl('1024x1024');
+      trimUrl('200x200');
+      trimUrl('original');
+
+      assert.deepEqual(data, {
+        identifier: 10,
+        storage: {
+          '1024x1024': {
+            url: 'https://storage.googleapis',
+            size: { width: 714, height: 1024 }
+          },
+          original: {
+            url: 'https://storage.googleapis',
+            size: { height: 3623, width: 2527 }
+          },
+          '200x200': {
+            url: 'https://storage.googleapis',
+            size: { width: 139, height: 200 }
+          }
+        }
+      });
     });
 
   });
