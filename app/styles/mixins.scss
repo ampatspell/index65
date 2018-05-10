@@ -1,3 +1,27 @@
+@mixin mobile {
+  @media only screen and (max-width: 529px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media only screen and (min-width: 530px) and (max-width: 949px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media only screen and (min-width: 950px) and (max-width: 1128px) {
+    @content;
+  }
+}
+
+@mixin desktop-xl {
+  @media only screen and (min-width: 1129px) {
+    @content;
+  }
+}
+
 @mixin container() {
   padding-left: 20px;
   padding-right: 20px;

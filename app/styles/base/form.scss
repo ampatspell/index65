@@ -5,9 +5,9 @@
     width: 100%;
     max-width: 1024px;
   }
-  // @media @mobile, @tablet {
-  //   width: 100%;
-  // }
+  @include mobile {
+    width: 100%;
+  }
 }
 
 @mixin base-input() {
