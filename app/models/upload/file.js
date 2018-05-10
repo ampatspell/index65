@@ -4,9 +4,6 @@ import { readOnly } from '@ember/object/computed';
 import { typeOf } from '@ember/utils';
 import { inject as service } from '@ember/service';
 
-import { Promise } from 'rsvp';
-import { later } from '@ember/runloop';
-
 const toInt = string => {
   let int = parseInt(string);
   if(isNaN(int)) {
@@ -57,19 +54,13 @@ export default Model.extend({
 
     let path = `images/${source.ref.id}/${collection.ref.id}/${group}/${image}/original`;
 
-    // let task = this.store.storage.ref(path).put({
-    //   type: 'data',
-    //   data: file,
-    //   metadata: {
-    //     contentType: file.type
-    //   }
-    // });
-    //
-    // return task.promise;
-
-    return new Promise(resolve => {
-      later(() => resolve(), Math.floor(Math.random() * 3000) + 1000);
-    });
+    return this.store.storage.ref(path).put({
+      type: 'data',
+      data: file,
+      metadata: {
+        contentType: file.type
+      }
+    }).promise;
   },
 
   willUpload() {
