@@ -37,6 +37,12 @@ export default Store.extend({
       this.set('user', next);
       current && current.destroy();
     }
+  },
+
+  signOut() {
+    let user = this.user;
+    user && user.cancel();
+    return this.auth.signOut();
   }
 
 });

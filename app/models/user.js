@@ -36,8 +36,12 @@ export default Model.extend({
     return this;
   },
 
-  willDestroy() {
+  cancel() {
     this.observer.cancel();
+  },
+
+  willDestroy() {
+    this.cancel();
     this._super(...arguments);
   }
 
