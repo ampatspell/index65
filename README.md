@@ -27,14 +27,9 @@ Reimplementation of [CouchDB-based index65](https://bitbucket.org/ampatspell/ind
           identifier: number
 ```
 
-## Batch upload
-
-* select source and collection
-* choose files:
-
 ```
-valdis-1-1.jpg
-valdis-1-2.jpg
+/images/{source}/{collection}/{group}/{image}
+  * original
+  * 1024x1024 (jpeg)
+  * 200x200 (jpeg)
 ```
-
-* parse group and image numbers
