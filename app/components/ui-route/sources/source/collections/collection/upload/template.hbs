@@ -1,0 +1,15 @@
+{{app-row value=(concat 'Upload to "' source.data.name ' / ' collection.data.name '"')}}
+
+{{#app-row}}
+  {{ui-file multiple=true update=(action 'files')}}
+{{/app-row}}
+
+{{#each batch.files as |file|}}
+  {{#app-row}}
+    {{file.group}} / {{file.image}} / {{if file.isUploading 'uploading'}} {{if file.isUploaded 'uploaded'}} {{if file.isError error.message}}
+  {{/app-row}}
+{{else}}
+  {{app-row icon='error' value='No files selected'}}
+{{/each}}
+
+{{app-row value='Upload' action=(action 'upload')}}

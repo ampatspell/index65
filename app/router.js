@@ -18,6 +18,7 @@ Router.map(function() {
     this.route('source', { path: ':source_id' }, function() {
       this.route('collections', function() {
         this.route('collection', { path: ':collection_id' }, function() {
+          this.route('upload');
           this.route('groups', function() {
             this.route('group', { path: ':group_id' }, function() {
             });
