@@ -4,7 +4,7 @@ export default Component.extend({
 
   actions: {
     group(doc) {
-      console.log(doc+'');
+      this.router.transitionTo('sources.source.collections.collection.groups.group', doc.id);
     }
   }
 
