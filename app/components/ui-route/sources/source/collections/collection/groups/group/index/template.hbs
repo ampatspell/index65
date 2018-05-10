@@ -2,7 +2,12 @@
   <div class="ui-grid">
     {{#each images.content as |image|}}
       <div class="item">
-        <img class="image" src={{image.data.storage.200x200}}>
+        {{ui-image
+            class='image'
+            src=image.data.storage.200x200.url
+            width=image.data.storage.200x200.size.width
+            height=image.data.storage.200x200.size.height
+        }}
         <div class="description">{{concat '#' (pad image.data.identifier 2)}}</div>
       </div>
     {{/each}}
