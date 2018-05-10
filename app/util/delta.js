@@ -12,7 +12,7 @@ export default (modelKey, arrayKey, value) => computed(modelKey, `${arrayKey}.[]
 
   idx = idx + value;
 
-  if(idx < 0 || idx > groups.content.length) {
+  if(idx < 0 || idx > array.length) {
     return;
   }
 

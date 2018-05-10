@@ -24,7 +24,7 @@ export default Component.extend({
 
   name: null,
 
-  click() {
+  click(e) {
     this.action && this.action();
   },
 

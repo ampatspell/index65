@@ -1,1 +1,3 @@
-{{concat '#' model.group.data.identifier}}
+{{#app-header/item/prev-next model=model.group array=model.groups.content action=(action 'navigate')}}
+  <div {{action 'click'}}>{{concat '#' model.group.data.identifier}}</div>
+{{/app-header/item/prev-next}}
