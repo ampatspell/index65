@@ -5,5 +5,5 @@ export default Route.extend({
   beforeModel() {
     return this.store.ready;
   }
-
+  
 });

@@ -1,8 +1,9 @@
 import Route from '@ember/routing/route';
-import Secured from './-secured';
 
-export default Route.extend(Secured, {
+export default Route.extend({
 
-  require: 'member'
+  beforeModel() {
+    this.transitionTo('sources');
+  }
 
 });

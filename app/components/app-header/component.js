@@ -1,18 +1,19 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 const base = [
-  { name: 'logo' },
-  { name: 'authentication' }
+  { type: 'logo' },
+  { type: 'authentication' }
 ];
 
 export default Component.extend({
   classNameBindings: [':app-header'],
 
-  breadcrumbs: null,
+  breadcrumbs: service(),
 
-  items: computed('breadcrumbs.[]', function() {
-    let breadcrumbs = this.breadcrumbs || [];
+  items: computed('breadcrumbs.models.[]', function() {
+    let breadcrumbs = this.breadcrumbs.models || [];
     return [ ...base, ...breadcrumbs ];
   })
 

@@ -1,5 +1,3 @@
-{{app-row value=(concat source.data.name ' / ' collection.data.name)}}
-
 {{#each groups.content as |group|}}
   {{app-row icon='collection' value=(concat '#' group.data.identifier) action=(action 'group' group)}}
 {{else}}

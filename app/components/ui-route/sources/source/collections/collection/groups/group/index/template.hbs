@@ -1,5 +1,3 @@
-{{app-row value=(concat source.data.name ' / ' collection.data.name ' / ' group.data.identifier)}}
-
 {{#each images.content as |image|}}
   {{app-row value=(concat '#' image.data.identifier)}}
 {{else}}
