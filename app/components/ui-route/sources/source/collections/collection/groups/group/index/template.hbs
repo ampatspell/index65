@@ -1,7 +1,7 @@
 {{#if images.content}}
   <div class="ui-grid">
     {{#each images.content as |image|}}
-      <div class="item">
+      <div class="item" {{action 'image' image}}>
         {{ui-image
             class='image'
             src=image.data.storage.200x200.url

@@ -21,6 +21,10 @@ Router.map(function() {
           this.route('upload');
           this.route('groups', function() {
             this.route('group', { path: ':group_id' }, function() {
+              this.route('images', function() {
+                this.route('image', { path: ':image_id' }, function() {
+                });
+              });
             });
           });
         });

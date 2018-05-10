@@ -4,6 +4,10 @@ export default (modelKey, arrayKey, value) => computed(modelKey, `${arrayKey}.[]
   let model = this.get(modelKey);
   let array = this.get(arrayKey);
 
+  if(!model || !array) {
+    return;
+  }
+
   let idx = array.indexOf(model);
 
   if(idx == -1) {
