@@ -1,7 +1,7 @@
 const setup = require('./helpers/setup');
 const assert = require('assert');
 
-describe('rules / groups', () => {
+describe('rules / group', () => {
   setup(this);
 
   beforeEach(() => {

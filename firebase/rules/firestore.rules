@@ -38,6 +38,11 @@ service cloud.firestore {
         match /groups/{group} {
           allow read: if isMember();
           allow write: if isAdmin();
+
+          match /images/{image} {
+            allow read: if isMember();
+            allow write: if isAdmin();
+          }
         }
       }
     }
