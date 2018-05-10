@@ -1,0 +1,26 @@
+{{#app-block}}
+
+  {{#app-form action=(action 'save')}}
+
+    {{app-model-error model=model}}
+
+    {{app-input
+        label=(l 'Email')
+        value=model.email
+        update=(action (mut model.email))
+        disabled=model.isSaving
+    }}
+
+    {{app-input
+        label=(l 'Password')
+        value=model.password
+        update=(action (mut model.password))
+        type="password"
+        disabled=model.isSaving
+    }}
+
+    {{app-button label=(l 'Sign up') disabled=model.isSaving}}
+
+  {{/app-form}}
+
+{{/app-block}}

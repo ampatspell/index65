@@ -11,7 +11,7 @@
 
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: baseline;
 
   &:last-child {
     border-bottom: 1px solid $border-color;
@@ -57,6 +57,7 @@
     height: 44px;
     line-height: 44px;
     margin-right: 10px;
+    align-self: center;
   }
   > .key {
     font-size: 12px;

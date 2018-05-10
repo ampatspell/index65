@@ -11,8 +11,8 @@
       {{#if user.roles}}
 
         {{#app-row icon='roles'}}
-          {{app-span value=(l 'Roles:')}}
-          <span class="comma-list">{{#each user.roles as |role|}}{{app-span value=(l role) class="item"}}{{/each}}</span>
+          {{app-span value=(l 'Roles') class='key'}}
+          {{#app-span class='value comma-list padded'}}{{#each user.roles as |role|}}{{app-span value=(l role) class="item"}}{{/each}}{{/app-span}}
         {{/app-row}}
 
       {{else}}
@@ -20,7 +20,7 @@
       {{/if}}
 
     {{else}}
-      {{app-row icon='error' value=(l 'No user information available')}}
+      {{app-row icon='error' value=(l 'Loading…')}}
     {{/if}}
 
   {{/if}}

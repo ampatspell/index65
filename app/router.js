@@ -9,6 +9,7 @@ const Router = EmberRouter.extend({
 Router.map(function() {
 
   this.route('session', function() {
+    this.route('sign-up');
     this.route('new');
     this.route('delete');
     this.route('denied');
