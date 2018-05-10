@@ -3,7 +3,7 @@
     {{#each images.content as |image|}}
       <div class="item">
         <img class="image" src={{image.data.storage.200x200}}>
-        <div class="description">{{concat '#' image.data.identifier}}</div>
+        <div class="description">{{concat '#' (pad image.data.identifier 2)}}</div>
       </div>
     {{/each}}
   </div>
