@@ -8,6 +8,8 @@ export default Route.extend(Model, {
       let source = route.modelFor('sources.source');
       this.source = source.source;
       this.collection = source.collections.content.findBy('id', params.collection_id);
+      this.groups = this.collection.ref.collection('groups').orderBy('identifier').query({ type: 'array' });
+      this.observe(this.groups);
     }
   })
 

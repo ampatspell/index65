@@ -1,2 +1,7 @@
-{{app-row icon="box" value=source}}
-{{app-row icon="box" value=collection}}
+{{app-row value=(concat source.data.name ' / ' collection.data.name)}}
+
+{{#each groups.content as |group|}}
+  {{app-row icon='collection' value=(concat '#' group.data.identifier) action=(action 'group' group)}}
+{{else}}
+  {{app-row icon='error' value='No image groups yet'}}
+{{/each}}
