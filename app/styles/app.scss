@@ -14,9 +14,21 @@ $invalid-color: #ba1e16;
 @import "base/form";
 @import "app-header";
 @import "app-row";
+@import "ui-file";
 
 .app-block {
   @include container();
+}
+
+.app-section {
+  margin-bottom: 44px;
+  @include ellipsis;
+  > .title {
+    @include container;
+    display: block;
+    font-size: 15px;
+    margin-bottom: 5px;
+  }
 }
 
 .comma-list {

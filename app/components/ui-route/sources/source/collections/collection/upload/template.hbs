@@ -1,15 +1,32 @@
-{{app-row value=(concat 'Upload to "' source.data.name ' / ' collection.data.name '"')}}
+{{#app-section}}
+  {{#app-block}}
+    {{ui-file multiple=true update=(action 'files')}}
+  {{/app-block}}
+{{/app-section}}
 
-{{#app-row}}
-  {{ui-file multiple=true update=(action 'files')}}
-{{/app-row}}
+{{#if batch.files}}
 
-{{#each batch.files as |file|}}
-  {{#app-row}}
-    {{file.group}} / {{file.image}} / {{if file.isUploading 'uploading'}} {{if file.isUploaded 'uploaded'}} {{if file.isError error.message}}
-  {{/app-row}}
-{{else}}
-  {{app-row icon='error' value='No files selected'}}
-{{/each}}
+  {{#app-section title='Selected files'}}
+    {{#app-block}}
+      {{#each batch.files as |file|}}
+        <div>
+          {{pad file.group 3}} / {{pad file.image 3}}
+          {{#if file.isUploading}}
+            – Uploading…
+          {{else if file.isUploaded}}
+            – Uploaded
+          {{else if file.isError}}
+            – {{file.error.message}}
+          {{/if}}
+        </div>
+      {{/each}}
+    {{/app-block}}
+  {{/app-section}}
 
-{{app-row value='Upload' action=(action 'upload')}}
+  {{#app-section}}
+    {{#app-block}}
+      {{app-button label=(l 'Upload')}}
+    {{/app-block}}
+  {{/app-section}}
+
+{{/if}}

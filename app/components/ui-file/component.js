@@ -1,5 +1,6 @@
 import Component from '@ember/component';
 import { A } from '@ember/array';
+import { equal } from '@ember/object/computed';
 
 const toArray = files => {
   let arr = A();
@@ -10,8 +11,12 @@ const toArray = files => {
 }
 
 export default Component.extend({
+  classNameBindings: [ ':ui-file' ],
 
   multiple: false,
+  selection: null,
+
+  isOneSelected: equal('selection.length', 1),
 
   actions: {
     onChange(e) {
@@ -29,11 +34,11 @@ export default Component.extend({
         }
         this._update(file);
       }
+      this.set('selection', files);
     }
   },
 
   _update(selection) {
-    this.set('selection', selection);
     let update = this.get('update');
     update && update(selection);
   }

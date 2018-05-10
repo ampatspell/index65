@@ -1,11 +1,20 @@
-<input class="input" type="file" multiple={{multiple}} onchange={{action 'onChange'}}>
-{{!--
-<div class="details">
-  {{#if selection}}
-    <span class="prefix">Choose file:</span>
-    <span class="name">{{selection.name}}</span>
-  {{else}}
-    <span class="placeholder">Choose file</span>
-  {{/if}}
+<div class="wrapper">
+  <input class="input" type="file" multiple={{multiple}} onchange={{action 'onChange'}}>
+  <div class="details">
+    {{#if selection}}
+      {{#if multiple}}
+        <span class="prefix">Choose files:</span>
+        <span class="name">Selected {{selection.length}} {{if isOneSelected 'file' 'files'}}</span>
+      {{else}}
+      <span class="prefix">Choose file:</span>
+        <span class="name">{{selection.name}}</span>
+      {{/if}}
+    {{else}}
+      {{#if multiple}}
+        <span class="placeholder">Choose files</span>
+      {{else}}
+        <span class="placeholder">Choose file</span>
+      {{/if}}
+    {{/if}}
+  </div>
 </div>
---}}

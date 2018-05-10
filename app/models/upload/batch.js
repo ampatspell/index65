@@ -19,7 +19,7 @@ export default Model.extend({
     let start = new Date();
     return all(files.map(file => file.upload())).then(() => {
       let end = new Date();
-      let took = (end - start / 1000;
+      let took = (end - start) / 1000;
       console.log(`Uploaded ${files.length} files, took ${took} seconds`);
     });
   }

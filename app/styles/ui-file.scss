@@ -1,0 +1,30 @@
+.ui-file {
+  > .wrapper {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    > .input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      outline: none;
+      opacity: 0.00001;
+    }
+    > .details {
+      @include button();
+      > .prefix {
+        color: #777;
+      }
+      > .name {
+        font-weight: 600;
+      }
+    }
+    &:hover {
+      > .details {
+        background: fade-out(#ddd, 0.8);
+      }
+    }
+  }
+}
