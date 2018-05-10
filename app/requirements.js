@@ -22,8 +22,19 @@ const member = ({ user }) => {
   return null;
 };
 
+const admin = ({ user }) => {
+  if(!user) {
+    return 'login';
+  }
+  if(!user.isAdmin) {
+    return 'denied';
+  }
+  return null;
+};
+
 export default {
   loggedIn,
   anonymous,
-  member
+  member,
+  admin
 }
