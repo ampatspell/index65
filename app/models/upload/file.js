@@ -41,6 +41,7 @@ export default Model.extend({
       isError: false,
       error: null
     });
+
     let { batch, file, group, image } = this;
     let { source, collection } = batch;
 
