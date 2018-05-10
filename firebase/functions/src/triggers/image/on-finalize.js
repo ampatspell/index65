@@ -23,9 +23,20 @@ export default app => app.functions.storage.object().onFinalize(async object => 
 
   let scaled = await scale(app, { original: { bucket, name }, sizes: [ 1024, 200 ] });
 
-  await app.firestore.doc(`sources/${source}/collections/${collection}/groups/${group}/images/${image}`).update({
-    identifier: parseInt(image),
-    storage: scaled
-  }, { merge: true });
+  let createGroup = () => {
+    let ref = app.firestore.doc(`sources/${source}/collections/${collection}/groups/${group}`);
+    return ref.set({ identifier: parseInt(group) }, { merge: true });
+  }
 
+  let createImage = () => {
+    return app.firestore.doc(`sources/${source}/collections/${collection}/groups/${group}/images/${image}`).update({
+      identifier: parseInt(image),
+      storage: scaled
+    }, { merge: true });
+  };
+
+  await Promise.all([
+    createGroup(),
+    createImage()
+  ]);
 });

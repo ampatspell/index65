@@ -33,3 +33,9 @@ Reimplementation of [CouchDB-based index65](https://bitbucket.org/ampatspell/ind
   * 1024x1024 (jpeg)
   * 200x200 (jpeg)
 ```
+
+## Setup
+
+* https://console.cloud.google.com/iam-admin/iam
+* <app-id>@appspot.gserviceaccount.com → Edit
+* Add "Service Account Token Creator" role
