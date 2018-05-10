@@ -19,20 +19,29 @@ describe('trigger / image', () => {
 
     beforeEach(() => {
       this.onFinalize = this.test.wrap(this.app.triggers.image.onFinalize);
-      this.name = '/images/valdis/35mm/100/10/original';
+      this.ref = this.admin.firestore.doc('sources/valdis/collections/35mm/groups/100/images/10');
+      this.name = 'images/valdis/35mm/100/10/original';
       this.file = this.admin.bucket.file(this.name);
       this.upload = async () => this.file.save(await readFile('valdis-0106-010.jpg'), { contentType: 'image/jpg' });
     });
 
     it('scales image', async () => {
+      await this.ref.delete();
       await this.upload();
       let object = this.test.storage.makeObjectMetadata({
         name: this.name,
         contentType: 'image/jpg',
         bucket: this.admin.bucket.name
       });
+
       await this.onFinalize(object);
-      assert.ok(true);
+
+      let snapshot = await this.ref.get();
+      let data = snapshot.data();
+      assert.equal(data.identifier, 10);
+      assert.ok(data.storage.original);
+      assert.ok(data.storage['1024x1024']);
+      assert.ok(data.storage['200x200']);
     });
 
   });
