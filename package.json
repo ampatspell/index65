@@ -37,6 +37,8 @@
     "ember-cli-uglify": "^2.0.0",
     "ember-cli-zuglet": "^0.0.14",
     "ember-export-application-global": "^2.0.0",
+    "ember-gestures": "^1.0.0",
+    "ember-hammertime": "^1.5.0",
     "ember-load-initializers": "^1.0.0",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-resolver": "^4.0.0",
