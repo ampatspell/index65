@@ -1,5 +1,12 @@
-{{#each images.content as |image|}}
-  {{app-row value=(concat '#' image.data.identifier)}}
+{{#if images.content}}
+  <div class="ui-grid">
+    {{#each images.content as |image|}}
+      <div class="item">
+        <img class="image" src={{image.data.storage.200x200}}>
+        <div class="description">{{concat '#' image.data.identifier}}</div>
+      </div>
+    {{/each}}
+  </div>
 {{else}}
   {{app-row icon='error' value='No images for this group yet'}}
-{{/each}}
+{{/if}}
