@@ -1,5 +1,6 @@
 import Model from '../model';
 import { all } from 'rsvp';
+import { filterBy } from '@ember/object/computed';
 
 export default Model.extend({
 
@@ -7,6 +8,9 @@ export default Model.extend({
   collection: null,
 
   files: null,
+  pending: filterBy('files', 'isPending', true),
+  valid: filterBy('files', 'isValid', true),
+  uploaded: filterBy('files', 'isUploaded', true),
 
   update(files) {
     let models = this.models;
@@ -15,12 +19,11 @@ export default Model.extend({
   },
 
   upload() {
-    let files = this.files.filter(file => !file.isUploading && !file.isUploaded && file.isValid);
+    let files = this.pending.filter(file => !file.isUploading);
     let start = new Date();
     return all(files.map(file => file.upload())).then(() => {
       let end = new Date();
-      let took = (end - start) / 1000;
-      console.log(`Uploaded ${files.length} files, took ${took} seconds`);
+      this.set('took', (end - start) / 1000);
     });
   }
 

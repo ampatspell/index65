@@ -3,10 +3,16 @@
   @include noselect();
   @include ellipsis();
   cursor: pointer;
+
   height: 44px;
   line-height: 44px;
   font-size: 18px;
   border-top: 1px solid $border-color;
+
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+
   &:last-child {
     border-bottom: 1px solid $border-color;
   }
@@ -45,10 +51,8 @@
       background: none;
     }
   }
-  // .clearfix;
   > .app-icon {
     display: block;
-    float: left;
     font-size: 26px;
     height: 44px;
     line-height: 44px;
@@ -56,6 +60,7 @@
   }
   > .key {
     font-size: 12px;
+    margin-right: 5px;
     &:after {
       content: ": ";
     }

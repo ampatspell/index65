@@ -4,13 +4,31 @@
   {{/app-block}}
 {{/app-section}}
 
-{{#if batch.files}}
+{{#app-section}}
+  {{#if batch.valid}}
+    {{app-row key='Total' value=(concat batch.valid.length ' files')}}
+    {{app-row key='Uploaded' value=(concat batch.uploaded.length ' files')}}
+    {{#if batch.took}}
+      {{app-row key='Took' value=(concat batch.took ' seconds')}}
+    {{/if}}
+  {{/if}}
+{{/app-section}}
 
-  {{#app-section title='Selected files'}}
+{{#app-section}}
+  {{#if batch.pending}}
     {{#app-block}}
-      {{#each batch.files as |file|}}
+      {{app-button label=(l 'Upload selected files') action=(action 'upload')}}
+    {{/app-block}}
+  {{/if}}
+{{/app-section}}
+
+{{#if batch.pending}}
+  {{#app-section}}
+    {{#app-block}}
+      {{#each batch.pending as |file|}}
         <div>
-          {{pad file.group 3}} / {{pad file.image 3}}
+          {{file.name}} –
+          {{concat '#' (pad file.group 4)}} / {{pad file.image 3}}
           {{#if file.isUploading}}
             – Uploading…
           {{else if file.isUploaded}}
@@ -22,11 +40,4 @@
       {{/each}}
     {{/app-block}}
   {{/app-section}}
-
-  {{#app-section}}
-    {{#app-block}}
-      {{app-button label=(l 'Upload')}}
-    {{/app-block}}
-  {{/app-section}}
-
 {{/if}}
