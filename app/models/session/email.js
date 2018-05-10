@@ -27,7 +27,7 @@ export default Model.extend({
     return false;
   },
 
-  async perform(method, email, password) {
+  async perform() {
   },
 
   async save() {
