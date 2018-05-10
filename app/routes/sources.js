@@ -7,7 +7,7 @@ export default Route.extend(Secured, Model, {
   require: 'member',
 
   model: load({
-    didCreate(route) {
+    didCreate() {
       this.sources = this.store.collection('sources').orderBy('name').query({ type: 'array' });
       this.observe(this.sources, true);
     }

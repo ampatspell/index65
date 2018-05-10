@@ -43,6 +43,8 @@ export default Model.extend({
     let [ filename, extension ] = name.split('.');
     let [ prefix, group, image ] = filename.split('-');
     this.setProperties({
+      prefix,
+      extension,
       group: toInt(group),
       image: toInt(image)
     });
