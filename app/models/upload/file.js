@@ -60,7 +60,8 @@ export default Model.extend({
       type: 'data',
       data: file,
       metadata: {
-        contentType: file.type
+        contentType: file.type,
+        cacheControl: 'public, max-age=31536000'
       }
     }).promise;
   },
