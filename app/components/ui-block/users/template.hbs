@@ -1,0 +1,3 @@
+{{#each users as |user|}}
+  {{ui-block/users/user user=user click=(action 'select' user)}}
+{{/each}}

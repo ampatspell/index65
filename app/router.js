@@ -33,6 +33,12 @@ Router.map(function() {
     });
   });
 
+  this.route('users', function() {
+    this.route('user', { path: ':user_id' }, function() {
+      this.route('edit');
+    });
+  });
+
 });
 
 export default Router;

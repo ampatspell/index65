@@ -4,8 +4,8 @@
 $font-family: 'Ubuntu Mono';
 $text-color: #333;
 
-$hover-background-color: fadeout(#000, 99%);
-$border-color: fadeout(#000, 97%);
+$hover-background-color: fade-out(#000, 0.99);
+$border-color: fade-out(#000, 0.97);
 $invalid-color: #ba1e16;
 
 @import "mixins";
@@ -81,6 +81,35 @@ $invalid-color: #ba1e16;
     padding: 20px;
     > .image {
       height: 100%;
+    }
+  }
+}
+
+.ui-block-users-user {
+  @include container();
+  @include noselect();
+  @include ellipsis();
+  cursor: pointer;
+
+  font-size: 18px;
+  border-top: 1px solid $border-color;
+
+  padding-top: 12px;
+  padding-bottom: 10px;
+
+  > .email {
+  }
+  > .name {
+    font-size: 15px;
+  }
+  > .roles {
+    margin-top: 10px;
+    font-size: 15px;
+    > .role {
+
+    }
+    > .placeholder {
+      color: #999;
     }
   }
 }

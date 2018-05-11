@@ -1,0 +1,13 @@
+{{#if user.data.displayName}}
+  <div class="name">
+    {{user.data.displayName}}
+  </div>
+{{/if}}
+<div class="email">{{user.data.email}}</div>
+<div class="roles">
+  {{#each user.data.roles as |role|}}
+    <div class="role">{{role}}</div>
+  {{else}}
+    <div class="placeholder">No roles</div>
+  {{/each}}
+</div>

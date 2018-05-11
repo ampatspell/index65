@@ -1,0 +1,9 @@
+{{#app-section}}
+  {{app-row key='name' value=user.data.name placeholder='No name'}}
+  {{app-row key='email' value=user.data.email}}
+  {{app-row key='roles' value=user.data.roles placeholder='None'}}
+{{/app-section}}
+
+{{#app-block}}
+  {{app-button label=(l 'Edit') action=(action 'edit' user)}}
+{{/app-block}}
