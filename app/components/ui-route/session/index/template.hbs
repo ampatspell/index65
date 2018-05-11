@@ -28,3 +28,9 @@
   {{app-row icon='log-out' value=(l 'Sign out') action=(action 'logout')}}
 
 {{/app-section}}
+
+{{#if user.isAdmin}}
+  {{#app-section title='Administration'}}
+    {{app-row icon='admin' value=(l 'Users') action=(action 'users')}}
+  {{/app-section}}
+{{/if}}

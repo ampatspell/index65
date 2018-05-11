@@ -8,6 +8,9 @@ export default Component.extend({
   actions: {
     logout() {
       this.router.transitionTo('session.delete');
+    },
+    users() {
+      this.router.transitionTo('users');
     }
   }
 
