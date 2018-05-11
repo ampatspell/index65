@@ -14,7 +14,7 @@ class Config {
       let key = components[i];
       value = value[key];
       if(value === undefined) {
-        return;
+        return undefined;
       }
     }
 
