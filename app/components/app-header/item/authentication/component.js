@@ -9,10 +9,14 @@ export default Component.extend({
   user: readOnly('store.user'),
 
   click() {
-    if(this.user) {
-      this.router.transitionTo('session');
+    if(this.models.lastObject === this.model) {
+      if(this.user) {
+        this.router.transitionTo('session');
+      } else {
+        this.router.transitionTo('session.new');
+      }
     } else {
-      this.router.transitionTo('session.new');
+      this.router.transitionTo('index');
     }
   }
 
