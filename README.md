@@ -39,7 +39,4 @@ Reimplementation of [CouchDB-based index65](https://bitbucket.org/ampatspell/ind
 * https://console.cloud.google.com/iam-admin/iam
 * <app-id>@appspot.gserviceaccount.com → Edit
 * Add "Service Account Token Creator" role
-
-## TODO
-
-* Cache-Control, ... headers for images
+* `firebase functions:config:set environment.logging=true`

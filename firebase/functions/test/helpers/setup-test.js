@@ -8,7 +8,11 @@ module.exports = function(ctx) {
 
   let instance = test(config, account);
 
-  instance.mockConfig({});
+  instance.mockConfig({
+    environment: {
+      logging: false
+    }
+  });
 
   ctx.test = instance;
 
