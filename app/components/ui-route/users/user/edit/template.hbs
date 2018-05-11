@@ -4,20 +4,26 @@
 
 {{#app-section}}
   {{#app-block}}
-    {{#app-form action=(action 'save')}}
-      {{app-input
-          label=(l 'Name')
-          value=user.data.name
-          update=(action (mut user.data.name))
-          disabled=user.isSaving
-      }}
-    {{/app-form}}
+    {{app-input
+        label=(l 'Name')
+        value=user.data.displayName
+        update=(action (mut user.data.displayName))
+        disabled=user.isSaving
+    }}
   {{/app-block}}
+{{/app-section}}
+
+{{#app-section}}
+{{#each roles as |object|}}
+  {{#app-row}}
+    {{ui-checkbox value=object.checked update=(action 'updateRole' object)}}
+    {{object.role}}
+  {{/app-row}}
+{{/each}}
 {{/app-section}}
 
 {{#app-section}}
   {{#app-block}}
     {{app-button label=(l 'Update') disabled=user.isSaving action=(action 'save')}}
-    {{app-button label=(l 'Cancel') disabled=user.isSaving action=(action 'cancel')}}
   {{/app-block}}
 {{/app-section}}

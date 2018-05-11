@@ -1,10 +1,7 @@
 import Route from '@ember/routing/route';
-import Secured from '../-secured';
 import Model, { load } from 'models/mixins/route';
 
-export default Route.extend(Secured, Model, {
-
-  require: 'admin',
+export default Route.extend(Model, {
 
   model: load({
     didCreate() {

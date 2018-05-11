@@ -28,6 +28,8 @@ export default Model.extend({
 
   isAdminOrMember: or('isAdmin', 'isMember'),
 
+  screenName: or('doc.data.displayName', 'email'),
+
   async restore() {
     let ref = this.store.collection('users').doc(this.user.uid);
     let observer = ref.observe();
