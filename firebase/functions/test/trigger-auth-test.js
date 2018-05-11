@@ -17,9 +17,9 @@ describe('trigger / auth', () => {
 
       let data = (await ref.get()).data();
 
-      assert.ok(data.created_at);
+      assert.ok(data.createdAt);
       assert.deepEqual(data, {
-        created_at: data.created_at,
+        createdAt: data.createdAt,
         roles: [],
         email: 'zeeba@gmail.com',
         displayName: 'zeeba'

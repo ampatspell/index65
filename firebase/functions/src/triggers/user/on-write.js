@@ -9,9 +9,7 @@ export default app => app.functions.firestore.document('users/{uid}').onWrite(as
 
   let uid = after.ref.id;
 
-  console.log('claims', uid, roles);
-
-  app.info(`${uid}: update auth claims: ${roles}`);
+  app.info('update auth claims', uid, roles);
 
   await app.auth.setCustomUserClaims(uid, { roles });
 });

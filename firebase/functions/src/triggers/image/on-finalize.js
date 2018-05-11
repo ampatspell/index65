@@ -12,18 +12,18 @@ export default app => app.functions.storage.object().onFinalize(async object => 
   let bucket = object.bucket;
 
   if(!isImage(object)) {
-    app.info(`${name}: skip: not an image`);
+    app.info('skip', name, 'not an image');
     return;
   }
 
   let { prefix, source, collection, group, image, filename } = split(name);
 
   if(prefix !== 'images' || filename !== 'original') {
-    app.info(`${name}: skip: not an original`);
+    app.info('skip', name, 'not an original');
     return;
   }
 
-  app.info(`${name}: process`);
+  app.info('process', name);
 
   let scaled = await scale(app, { original: { bucket, name }, sizes: [ 1024, 200 ] });
 
