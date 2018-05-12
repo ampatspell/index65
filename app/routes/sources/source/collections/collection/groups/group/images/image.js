@@ -10,6 +10,7 @@ export default Route.extend(Breadcrumb, Model, {
 
     didCreate(route, params) {
       let group = route.modelFor('sources.source.collections.collection.groups.group');
+      this.group = group.group;
       this.image = group.images.content.findBy('id', params.image_id);
       this.images = group.images;
     }

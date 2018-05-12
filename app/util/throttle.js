@@ -1,5 +1,5 @@
 import { A } from '@ember/array';
-import { reject, resolve, defer } from 'rsvp';
+import { defer } from 'rsvp';
 
 export default (array, max, fn) => {
   let deferred = defer();
