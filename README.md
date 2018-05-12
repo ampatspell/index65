@@ -18,7 +18,7 @@ Reimplementation of [CouchDB-based index65](https://bitbucket.org/ampatspell/ind
 * Enable Firestore in Database section
 * Authentication → Sign-in Method → Enable Email/Password
 * Project Settings → Users and Permissions → Advanced permission settings
-  * Click edit on &lt;app-id&gt;@appspot.gserviceaccount.com
+  * Click edit on `<app-id>@appspot.gserviceaccount.com`
   * Add another role
   * Find "Service account token creator"
   * Save
@@ -63,7 +63,7 @@ npm run deploy
 
 ### Sign-up
 
-* Open `https://---.firebaseapp.com/session/sign-up`
+* Open `https://<app-id>.firebaseapp.com/session/sign-up`
 * Email, password, sign-up
 
 By default none of the signed up users are allowed to access anything in the app.
