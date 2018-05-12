@@ -1,46 +1,32 @@
 import scale from './-scale';
+import onFinalize from './-on-finalize';
 
-const split = name => {
-  let [ prefix, source, collection, group, image, filename ] = name.split('/');
-  return { prefix, source, collection, group, image, filename };
-};
-
-const isImage = object => object.contentType.startsWith('image/');
-
-export default app => app.functions.storage.object().onFinalize(async object => {
+export default app => onFinalize(app, 'images/{source}/{collection}/{group}/{image}/original', async (object, match) => {
   let name = object.name;
   let bucket = object.bucket;
 
-  if(!isImage(object)) {
-    app.info('skip', name, 'not an image');
-    return;
-  }
+  let { source, collection, group, image } = match;
 
-  let { prefix, source, collection, group, image, filename } = split(name);
+  group = parseInt(group);
+  image = parseInt(image);
 
-  if(prefix !== 'images' || filename !== 'original') {
-    app.info('skip', name, 'not an original');
-    return;
-  }
+  //
 
-  app.info('process', name);
+  let scaled = await scale(app, {
+    original: {
+      bucket,
+      name
+    },
+    sizes: [ 1024, 200 ]
+  });
 
-  let scaled = await scale(app, { original: { bucket, name }, sizes: [ 1024, 200 ] });
+  //
 
-  let createGroup = () => {
-    let ref = app.firestore.doc(`sources/${source}/collections/${collection}/groups/${group}`);
-    return ref.set({ identifier: parseInt(group) }, { merge: true });
-  }
-
-  let createImage = () => {
-    return app.firestore.doc(`sources/${source}/collections/${collection}/groups/${group}/images/${image}`).update({
-      identifier: parseInt(image),
-      storage: scaled
-    }, { merge: true });
-  };
+  let groupRef = app.firestore.doc(`sources/${source}/collections/${collection}/groups/${group}`);
+  let imageRef = app.firestore.doc(`sources/${source}/collections/${collection}/groups/${group}/images/${image}`);
 
   await Promise.all([
-    createGroup(),
-    createImage()
+    groupRef.set({ identifier: group }, { merge: true }),
+    imageRef.set({ identifier: image, storage: scaled }, { merge: true })
   ]);
 });
