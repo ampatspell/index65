@@ -36,7 +36,12 @@ Reimplementation of [CouchDB-based index65](https://bitbucket.org/ampatspell/ind
 
 ## Setup
 
+Cloud function generates public urls, so it needs token creator rule:
+
 * https://console.cloud.google.com/iam-admin/iam
 * <app-id>@appspot.gserviceaccount.com → Edit
 * Add "Service Account Token Creator" role
+
+Some cloud functions are logging useful info, to enable it:
+
 * `firebase functions:config:set environment.logging=true`
