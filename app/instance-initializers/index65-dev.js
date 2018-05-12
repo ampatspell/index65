@@ -25,7 +25,7 @@ export default {
     if(environment !== 'development') {
       return;
     }
-    console.log('projectId:', config.index65.firebase.projectId);
+    console.log('projectId:', config.index65.firebase.projectId); // eslint-disable-line no-console
     experiments(app);
   }
 };
