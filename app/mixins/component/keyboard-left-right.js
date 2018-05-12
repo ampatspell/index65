@@ -1,5 +1,6 @@
 import Mixin from '@ember/object/mixin';
 import { inject as service } from '@ember/service';
+import { join } from '@ember/runloop';
 
 export default Mixin.create({
 
@@ -12,7 +13,7 @@ export default Mixin.create({
     let create = (executionKey, action) => keyManager.addMacro({
       executionKey: executionKey,
       keyEvent: 'keydown',
-      callback: () => this.send(action)
+      callback: () => join(() => this.send(action))
     });
 
     let left = create('arrowleft', 'previous');
