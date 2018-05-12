@@ -70,7 +70,7 @@ npm run deploy
 
 By default none of the signed up users are allowed to access anything in the app.
 
-### Make yourself an admin
+### Make yourself an admin
 
 * Open Firebase Console → Database → users → uid
 * Add "admin" in roles array
