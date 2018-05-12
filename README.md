@@ -18,7 +18,7 @@ Reimplementation of [CouchDB-based index65](https://bitbucket.org/ampatspell/ind
 * Enable Firestore in Database section
 * Authentication → Sign-in Method → Enable Email/Password
 * Project Settings → Users and Permissions → Advanced permission settings
-  * Click edit on &lt;app-id&gt@appspot.gserviceaccount.com
+  * Click edit on &lt;app-id&gt;@appspot.gserviceaccount.com
   * Add another role
   * Find "Service account token creator"
   * Save
