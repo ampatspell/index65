@@ -61,7 +61,7 @@ export default Model.extend({
       data: file,
       metadata: {
         contentType: file.type,
-        cacheControl: 'public, max-age=31536000'
+        cacheControl: 'max-age=21600'
       }
     }).promise;
   },

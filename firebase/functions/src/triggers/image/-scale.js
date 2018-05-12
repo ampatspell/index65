@@ -55,7 +55,7 @@ export default async (app, opts) => {
         destination,
         metadata: {
           contentType: 'image/jpg',
-          cacheControl: 'public, max-age=31536000'
+          cacheControl: 'max-age=21600'
         }
       });
       return file;
