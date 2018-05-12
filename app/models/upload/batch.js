@@ -1,6 +1,6 @@
 import Model from '../model';
 import { filterBy } from '@ember/object/computed';
-import batch from 'index65/util/batch';
+import throttle from 'index65/util/throttle';
 
 export default Model.extend({
 
@@ -21,7 +21,7 @@ export default Model.extend({
   upload() {
     let files = this.pending.filter(file => !file.isUploading);
     let start = new Date();
-    return batch(files, 50, file => file.upload()).then(() => {
+    return throttle(files, 10, file => file.upload()).then(() => {
       let end = new Date();
       this.set('took', (end - start) / 1000);
     });
