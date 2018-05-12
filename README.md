@@ -1,9 +1,8 @@
 # index65
 
-Ember.js & Firebase.
+Scanned negatives publishing app.
 
-Reimplementation of [CouchDB-based index65](https://bitbucket.org/ampatspell/index65/src/default/
-).
+> [Ember.js](https://emberjs.com/) & [Firebase](https://firebase.google.com/) using [ember-cli-zuglet](https://github.com/ampatspell/ember-cli-zuglet). A reimplementation of my [CouchDB-based index65](https://bitbucket.org/ampatspell/index65/src/default/).
 
 ![](https://raw.githubusercontent.com/ampatspell/index65/master/docs/screenshot-2.png)
 
