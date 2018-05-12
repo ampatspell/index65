@@ -32,26 +32,34 @@ Reimplementation of [CouchDB-based index65](https://bitbucket.org/ampatspell/ind
 
 ### Firebase & Ember
 
-Install app dependencies
+Install [Node.js](https://nodejs.org/en/) (LTS or Latest, doesn't matter, both works just fine).
+
+Install app dependencies:
 
 ```
 $ npm install
 ```
 
-Install firebase functions dependencies
+Install firebase functions dependencies:
 
 ```
 $ cd firebase/functions
 $ npm install
 ```
 
-Select your firebase project
+Install firebase cli:
+
+```
+$ npm install -g firebase-tools
+```
+
+Select your firebase project:
 
 ```
 $ firebase use --add
 ```
 
-Build ember app and deploy it along with firebase functions, security rules.
+Build ember app and deploy it along with firebase functions, security rules:
 
 ```
 npm run deploy
