@@ -5,13 +5,17 @@ Ember.js & Firebase.
 Reimplementation of [CouchDB-based index65](https://bitbucket.org/ampatspell/index65/src/default/
 ).
 
+![](https://raw.githubusercontent.com/ampatspell/index65/master/docs/screenshot-2.png)
+
+![](https://raw.githubusercontent.com/ampatspell/index65/master/docs/screenshot-1.png)
+
 ## Schema
 
 ```
 /users/{uid}
   email: string
   displayName: string
-  created_at: date
+  createdAt: date
   roles: Array<String>
 
 /sources/{source}
@@ -36,7 +40,12 @@ Reimplementation of [CouchDB-based index65](https://bitbucket.org/ampatspell/ind
 
 ## Setup
 
+Cloud function generates public urls, so it needs token creator rule:
+
 * https://console.cloud.google.com/iam-admin/iam
 * <app-id>@appspot.gserviceaccount.com → Edit
 * Add "Service Account Token Creator" role
+
+Some cloud functions are logging useful info, to enable it:
+
 * `firebase functions:config:set environment.logging=true`
