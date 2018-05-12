@@ -2,7 +2,7 @@ const experiments = app => {
   let store = app.lookup('service:store');
 
   window.addSource = (identifier, name) => {
-    return store.doc(`sources/${source}`).new({ name }).save();
+    return store.doc(`sources/${identifier}`).new({ name }).save();
   };
 
   window.addCollection = (source, identifier, name) => {
