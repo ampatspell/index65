@@ -11,6 +11,12 @@ export default Component.extend(LeftRightMixin, {
   prev: delta('image', 'images.content', -1),
   next: delta('image', 'images.content', +1),
 
+  didUpdateAttrs() {
+    this._super(...arguments);
+    this.preloadImage(this.prev);
+    this.preloadImage(this.next);
+  },
+
   actions: {
     next() {
       this.transitionTo(this.next);
@@ -40,6 +46,13 @@ export default Component.extend(LeftRightMixin, {
       return;
     }
     this.router.transitionTo('sources.source.collections.collection.groups.group.images.image', model.id);
+  },
+
+  preloadImage(model) {
+    if(!model) {
+      return;
+    }
+    new Image().src = model.get('data.storage.1024x1024.url');
   }
 
 });
