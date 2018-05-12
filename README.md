@@ -9,7 +9,7 @@ Reimplementation of [CouchDB-based index65](https://bitbucket.org/ampatspell/ind
 
 ![](https://raw.githubusercontent.com/ampatspell/index65/master/docs/screenshot-1.png)
 
-## Installation
+## Installation
 
 ### Firebase
 
@@ -58,9 +58,7 @@ npm run deploy
 ```
 
 > Sometimes Firebase Coud Functions deployment fails on the first attempt when APIs are not yet enabled:
-
 > ⚠  functions: missing necessary APIs. Enabling now...
-
 > Just try again
 
 ### Sign-up
