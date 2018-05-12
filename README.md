@@ -58,7 +58,9 @@ npm run deploy
 ```
 
 > Sometimes Firebase Coud Functions deployment fails on the first attempt when APIs are not yet enabled:
+
 > ⚠  functions: missing necessary APIs. Enabling now...
+
 > Just try again
 
 ### Sign-up
