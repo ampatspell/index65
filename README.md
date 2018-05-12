@@ -169,3 +169,14 @@ valdis-130-037.jpg
   * 1024x1024 (jpeg)
   * 200x200 (jpeg)
 ```
+
+## TODO
+
+* Add, edit source ui
+* Add, edit collection ui
+* Group description, year, picture
+* Allow selected members to edit selected sources
+* Allow members to edit their `displayName`
+* Delete image
+* Delete group with images
+* Delete source
