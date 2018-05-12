@@ -22,6 +22,11 @@ Reimplementation of [CouchDB-based index65](https://bitbucket.org/ampatspell/ind
   * Add another role
   * Find "Service account token creator"
   * Save
+* Open `https://console.developers.google.com/apis/dashboard`
+  * Select your firebase project on the top
+  * Click "Enable APIs and Services"
+  * Search for "Identity and Access Management (IAM) API"
+  * Enable
 
 ### Configuration
 
@@ -80,9 +85,60 @@ By default none of the signed up users are allowed to access anything in the app
 
 And you're done.
 
+### Connect domain (optional)
+
+* In Firebase Console select Hosting
+* Connect Domain
+* Follow the steps
+
+### Add billing (optional)
+
+* In Firebase console bottom left there is "Spark" and "Upgrade"
+* Click
+* Select "Blaze", Purchase
+
+To set daily spending limit:
+
+* Open Google AppEngine Settings: `https://console.cloud.google.com/appengine/settings`
+* Select your Firebase project
+* Under application settings, click "Edit"
+* Set daily spending (0 or more)
+
 ## Content
 
-TODO
+Heh, I've forgotten to add "Create source" and "Create collection" screens.
+
+> I'll fix this soon enough.
+
+For now there are 2 globally exported functions _in development only_:
+
+Run app locally:
+
+```
+$ ember s
+```
+
+Open http://127.0.0.1:4200, sign-in, open browser's development tools → console.
+
+``` javascript
+await addSource('parents', 'Parents');
+await addCollection('parents', '35mm', '35mm film rolls');
+```
+
+Then you'll be able to upload pictues from the app.
+
+Pictures has the following expected file name format:
+
+```
+prefix-<group_id>-<image_id>.jpg
+
+valdis-001-001.jpg
+valdis-001-002.jpg
+valdis-001-003.jpg
+...
+valdis-130-036.jpg
+valdis-130-037.jpg
+```
 
 ## Notes
 
