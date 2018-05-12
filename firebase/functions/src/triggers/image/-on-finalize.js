@@ -7,6 +7,7 @@ export default (app, pattern, fn) => {
     let match = matcher(name);
     if(!match) {
       app.info('skip', name);
+      return;
     }
     app.info('process', name);
     await fn(object, match);
