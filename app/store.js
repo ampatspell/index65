@@ -1,15 +1,11 @@
 import Store from 'ember-cli-zuglet/store';
 import { inject as service } from '@ember/service';
+import environment from './config/environment';
+
+const firebase = environment.index65.firebase;
 
 const options = {
-  firebase: {
-    apiKey: "AIzaSyCtderAlhwtLpNiI2UTqCqwWYnGzmXs4Ns",
-    authDomain: "index65-dev.firebaseapp.com",
-    databaseURL: "https://index65-dev.firebaseio.com",
-    projectId: "index65-dev",
-    storageBucket: "index65-dev.appspot.com",
-    // messagingSenderId: "93010984533"
-  },
+  firebase,
   firestore: {
     persistenceEnabled: true
   }

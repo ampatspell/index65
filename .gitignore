@@ -31,3 +31,5 @@ firebase-debug.log
 /firebase/public
 
 /firebase/service-account-key.json
+
+/config.js
