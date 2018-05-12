@@ -11,7 +11,7 @@ Reimplementation of [CouchDB-based index65](https://bitbucket.org/ampatspell/ind
 /users/{uid}
   email: string
   displayName: string
-  created_at: date
+  createdAt: date
   roles: Array<String>
 
 /sources/{source}
