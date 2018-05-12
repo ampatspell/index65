@@ -1,26 +1,34 @@
-{{#app-block}}
+{{#app-section title='Sign-up'}}
+  {{#app-block}}
+    Note: you'll need an admin approval after sign-up in order to access images.
+  {{/app-block}}
+{{/app-section}}
 
-  {{#app-form action=(action 'save')}}
+{{#app-section}}
+  {{#app-block}}
 
-    {{app-model-error model=model}}
+    {{#app-form action=(action 'save')}}
 
-    {{app-input
-        label=(l 'Email')
-        value=model.email
-        update=(action (mut model.email))
-        disabled=model.isSaving
-    }}
+      {{app-model-error model=model}}
 
-    {{app-input
-        label=(l 'Password')
-        value=model.password
-        update=(action (mut model.password))
-        type="password"
-        disabled=model.isSaving
-    }}
+      {{app-input
+          label=(l 'Email')
+          value=model.email
+          update=(action (mut model.email))
+          disabled=model.isSaving
+      }}
 
-    {{app-button label=(l 'Sign up') disabled=model.isSaving}}
+      {{app-input
+          label=(l 'Password')
+          value=model.password
+          update=(action (mut model.password))
+          type="password"
+          disabled=model.isSaving
+      }}
 
-  {{/app-form}}
+      {{app-button label=(l 'Sign up') disabled=model.isSaving}}
 
-{{/app-block}}
+    {{/app-form}}
+
+  {{/app-block}}
+{{/app-section}}

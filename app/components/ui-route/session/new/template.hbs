@@ -5,7 +5,7 @@
     {{app-model-error model=model}}
 
     {{app-input
-        label=(l 'Username')
+        label=(l 'Email')
         value=model.email
         update=(action (mut model.email))
         disabled=model.isSaving
