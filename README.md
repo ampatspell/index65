@@ -90,7 +90,7 @@ And you're done.
 * Connect Domain
 * Follow the steps
 
-### Add billing (optional)
+### Add billing (optional)
 
 * In Firebase console bottom left there is "Spark" and "Upgrade"
 * Click
