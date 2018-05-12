@@ -5,6 +5,10 @@ Ember.js & Firebase.
 Reimplementation of [CouchDB-based index65](https://bitbucket.org/ampatspell/index65/src/default/
 ).
 
+![](https://raw.githubusercontent.com/ampatspell/index65/master/docs/screenshot-2.png)
+
+![](https://raw.githubusercontent.com/ampatspell/index65/master/docs/screenshot-1.png)
+
 ## Schema
 
 ```
