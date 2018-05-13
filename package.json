@@ -17,8 +17,7 @@
     "start": "ember serve",
     "test": "ember test",
     "prod": "ember build -prod --output-path firebase/public",
-    "deploy": "npm run prod && (cd firebase && firebase deploy)",
-    "hosting": "npm run prod && (cd firebase && firebase deploy --only hosting)"
+    "deploy": "npm run prod && (cd firebase && firebase deploy --project $FIREBASE)"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",

@@ -1,8 +1,19 @@
 'use strict';
 
-let firebase = require('../config');
+let config = require('../config');
 
 module.exports = function(environment) {
+
+  let firebaseEnvironment = process.env.FIREBASE;
+  if(!firebaseEnvironment) {
+    if(environment === 'production') {
+      console.log('No FIREBASE environment variable set.');
+      process.exit(-1);
+    }
+    firebaseEnvironment = 'development';
+  }
+  let firebase = config[firebaseEnvironment];
+
   let ENV = {
     modulePrefix: 'index65',
     environment,
@@ -18,7 +29,7 @@ module.exports = function(environment) {
     APP: {
     },
     index65: {
-      firebase: firebase[process.env.FIREBASE || environment]
+      firebase
     }
   };
 
