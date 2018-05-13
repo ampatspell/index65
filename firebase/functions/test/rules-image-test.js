@@ -9,19 +9,14 @@ describe('rules / image', () => {
     this.insert = (id=1, props) => this.ref(id+'').set({ identifier: id });
   });
 
-  it('allows to insert if user is admin', async () => {
+  it('prevents to insert if user is admin', async () => {
     await this.client.signIn('admin');
-    await this.insert();
+    await this.client.denied(this.insert());
   });
 
   it('prevents insert if user is not admin', async () => {
     await this.client.signIn('zeeba');
-    try {
-      await this.insert();
-      assert.ok(false, 'should throw');
-    } catch(err) {
-      assert.equal(err.code, 'permission-denied');
-    }
+    await this.client.denied(this.insert());
   });
 
 });

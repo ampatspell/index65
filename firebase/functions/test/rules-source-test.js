@@ -6,7 +6,7 @@ describe('rules / source', () => {
 
   beforeEach(() => {
     this.ref = id => this.client.firestore.doc(`sources/${id}`);
-    this.insert = (id='valdis', props) => this.ref(id).set({ name: 'valdis', editors: [ 'indra' ] });
+    this.insert = props => this.ref('valdis').set(Object.assign({ name: 'Valdis' }, props));
   });
 
   it('allows to insert if user is admin', async () => {
@@ -14,14 +14,19 @@ describe('rules / source', () => {
     await this.insert();
   });
 
+  it('prevents insert w/o name', async () => {
+    await this.client.signIn('admin');
+    await this.client.denied(this.insert({ name: null }));
+  });
+
+  it('prevents insert with random keys', async () => {
+    await this.client.signIn('admin');
+    await this.client.denied(this.insert({ foobar: 'hello' }));
+  });
+
   it('prevents insert if user is not admin', async () => {
     await this.client.signIn('zeeba');
-    try {
-      await this.insert();
-      assert.ok(false, 'should throw');
-    } catch(err) {
-      assert.equal(err.code, 'permission-denied');
-    }
+    await this.client.denied(this.insert());
   });
 
 });

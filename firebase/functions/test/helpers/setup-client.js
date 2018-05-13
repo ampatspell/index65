@@ -16,6 +16,7 @@ module.exports = function(ctx) {
 
   let signIn = require('./client/sign-in')(ctx);
   let signOut = require('./client/sign-out')(ctx);
+  let denied = require('./client/denied')(ctx);
 
   ctx.client = {
     app,
@@ -23,7 +24,8 @@ module.exports = function(ctx) {
     storage,
     auth,
     signIn,
-    signOut
+    signOut,
+    denied
   };
 
   return () => app.delete();
