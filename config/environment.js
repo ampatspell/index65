@@ -18,7 +18,7 @@ module.exports = function(environment) {
     APP: {
     },
     index65: {
-      firebase
+      firebase: firebase[process.env.FIREBASE || environment]
     }
   };
 

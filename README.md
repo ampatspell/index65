@@ -31,7 +31,7 @@ Scanned negatives publishing app.
 
 * Copy `config-example.js` as `config.js`
 * Go to Firebase console and select Project Overview → "Add Firebase to your webapp", copy config.
-* Paste it in your `config.js` the same way it is done in `config-example.js`
+* Paste it in your `config.js` `production` object, the same way it is done in `config-example.js`
 * Delete `messagingSenderId`
 
 ### Firebase & Ember
@@ -111,10 +111,10 @@ Heh, I've forgotten to add "Create source" and "Create collection" screens.
 
 For now there are 2 globally exported functions _in development only_:
 
-Run app locally:
+Run app locally with production firebase config:
 
 ```
-$ ember s
+$ FIREBASE=production ember s
 ```
 
 Open http://127.0.0.1:4200, sign-in, open browser's development tools → console.
