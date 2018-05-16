@@ -1,0 +1,25 @@
+{{#app-block}}
+
+  {{#app-form action=(action 'save')}}
+
+    {{app-model-error model=model}}
+
+    {{app-input
+        label=(l 'Identifier')
+        value=model.id
+        update=(action (mut model.id))
+        disabled=model.isSaving
+    }}
+
+    {{app-input
+        label=(l 'Name')
+        value=model.name
+        update=(action (mut model.name))
+        disabled=model.isSaving
+    }}
+
+    {{app-button label=(l 'Create') disabled=model.isSaving}}
+
+  {{/app-form}}
+
+{{/app-block}}

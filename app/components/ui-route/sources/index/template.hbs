@@ -1,5 +1,13 @@
-{{#each sources.content as |source|}}
-  {{app-row icon="collection" value=source.data.name action=(action 'source' source)}}
-{{else}}
-  {{app-row icon='error' value='No sources created yet'}}
-{{/each}}
+{{#app-section}}
+  {{#each sources.content as |source|}}
+    {{app-row icon="collection" value=source.data.name action=(action 'source' source)}}
+  {{else}}
+    {{app-row icon='error' value='No sources created yet'}}
+  {{/each}}
+{{/app-section}}
+
+{{#if (has-permission 'admin')}}
+  {{#app-section}}
+    {{app-row icon='admin' value='Add a new source' action=(action 'add')}}
+  {{/app-section}}
+{{/if}}

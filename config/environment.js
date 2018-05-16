@@ -7,7 +7,7 @@ module.exports = function(environment) {
   let firebaseEnvironment = process.env.FIREBASE;
   if(!firebaseEnvironment) {
     if(environment === 'production') {
-      console.log('No FIREBASE environment variable set.');
+      console.log('No FIREBASE environment variable set.'); // eslint-disable-line no-console
       process.exit(-1);
     }
     firebaseEnvironment = 'development';
@@ -50,6 +50,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    //
   }
 
   return ENV;

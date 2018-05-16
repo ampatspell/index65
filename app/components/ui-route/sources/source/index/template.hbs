@@ -1,3 +1,12 @@
-{{#each collections.content as |doc|}}
-  {{app-row icon="box" value=doc.data.name action=(action 'collection' doc)}}
-{{/each}}
+{{#app-section}}
+  {{#each collections.content as |doc|}}
+    {{app-row icon="box" value=doc.data.name action=(action 'collection' doc)}}
+  {{/each}}
+{{/app-section}}
+
+{{#if (has-permission 'admin')}}
+  {{#app-section}}
+    {{app-row icon='admin' value='Edit source' action=(action 'edit')}}
+    {{app-row icon='admin' value='Add a new collection' action=(action 'add')}}
+  {{/app-section}}
+{{/if}}
