@@ -1,5 +1,4 @@
 import Model from './model';
-import { resolve, reject } from 'rsvp';
 
 export const err = code => {
   let error = new Error(`${code}`);
