@@ -16,7 +16,9 @@ Router.map(function() {
   });
 
   this.route('sources', function() {
+    this.route('new');
     this.route('source', { path: ':source_id' }, function() {
+      this.route('edit');
       this.route('collections', function() {
         this.route('collection', { path: ':collection_id' }, function() {
           this.route('upload');
