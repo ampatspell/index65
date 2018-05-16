@@ -1,0 +1,18 @@
+{{#app-block}}
+
+  {{#app-form action=(action 'save')}}
+
+    {{app-model-error model=model}}
+
+    {{app-input
+        label=(l 'Name')
+        value=model.name
+        update=(action (mut model.name))
+        disabled=model.isSaving
+    }}
+
+    {{app-button label=(l 'Update') disabled=model.isSaving}}
+
+  {{/app-form}}
+
+{{/app-block}}
