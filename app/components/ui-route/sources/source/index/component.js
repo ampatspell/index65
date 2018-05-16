@@ -13,6 +13,9 @@ export default Component.extend(LeftRightMixin, {
     },
     collection(doc) {
       this.router.transitionTo('sources.source.collections.collection', doc.id);
+    },
+    edit() {
+      this.router.transitionTo('sources.source.edit', this.source.id);
     }
   }
 

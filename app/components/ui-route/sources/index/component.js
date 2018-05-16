@@ -7,6 +7,9 @@ export default Component.extend({
   actions: {
     source(source) {
       this.router.transitionTo('sources.source', source.id);
+    },
+    add() {
+      this.router.transitionTo('sources.new');
     }
   }
 
