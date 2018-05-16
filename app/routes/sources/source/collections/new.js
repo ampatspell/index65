@@ -1,8 +1,5 @@
 import Route from '@ember/routing/route';
-import Secured from '../../../-secured';
+import Secured from 'index65/routes/-secured-admin';
 
 export default Route.extend(Secured, {
-
-  require: 'admin'
-
 });
