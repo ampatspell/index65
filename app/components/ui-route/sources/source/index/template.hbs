@@ -7,5 +7,6 @@
 {{#if (has-permission 'admin')}}
   {{#app-section}}
     {{app-row icon='admin' value='Edit source' action=(action 'edit')}}
+    {{app-row icon='admin' value='Add a new collection' action=(action 'add')}}
   {{/app-section}}
 {{/if}}
