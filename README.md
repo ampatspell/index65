@@ -105,26 +105,10 @@ To set daily spending limit:
 
 ## Content
 
-Heh, I've forgotten to add "Create source" and "Create collection" screens.
-
-> I'll fix this soon enough.
-
-For now there are 2 globally exported functions _in development only_:
-
-Run app locally with production firebase config:
-
-```
-$ FIREBASE=production ember s
-```
-
-Open http://127.0.0.1:4200, sign-in, open browser's development tools → console.
-
-``` javascript
-await addSource('parents', 'Parents');
-await addCollection('parents', '35mm', '35mm film rolls');
-```
-
-Then you'll be able to upload pictues from the app.
+* login as admin
+* add source
+* add collection
+* upload pictures
 
 Pictures has the following expected file name format:
 
