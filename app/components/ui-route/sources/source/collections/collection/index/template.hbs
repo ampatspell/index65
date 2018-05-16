@@ -6,9 +6,9 @@
   {{/each}}
 {{/app-section}}
 
-
-{{#if store.user.isAdmin}}
+{{#if (has-permission 'admin')}}
   {{#app-section}}
+    {{app-row icon='admin' value=(l 'Edit collection') action=(action 'edit')}}
     {{app-row icon='admin' value=(l 'Upload images') action=(action 'upload')}}
   {{/app-section}}
 {{/if}}
