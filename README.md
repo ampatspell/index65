@@ -156,8 +156,6 @@ valdis-130-037.jpg
 
 ## TODO
 
-* Add, edit source ui
-* Add, edit collection ui
 * Group description, year, picture
 * Allow selected members to edit selected sources
 * Allow members to edit their `displayName`
