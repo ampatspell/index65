@@ -40,9 +40,8 @@ export default Model.extend({
   init() {
     this._super(...arguments);
     let name = this.file.name;
-    let [ mathed, prefix, group, image, extension ] = name.match(/([\S]+)-([\d]+)-([\d]+)\.([\S]+)/i);
+    let [ , prefix, group, image, extension ] = name.match(/([\S]+)-([\d]+)-([\d]+)\.([\S]+)/i);
     this.setProperties({
-      matched,
       prefix,
       extension,
       group: toInt(group),
