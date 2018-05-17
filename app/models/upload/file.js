@@ -40,8 +40,7 @@ export default Model.extend({
   init() {
     this._super(...arguments);
     let name = this.file.name;
-    let [ filename, extension ] = name.split('.');
-    let [ prefix, group, image ] = filename.split('-');
+    let [ _, prefix, group, image, extension ] = name.match(/([\S]+)-([\d]+)-([\d]+)\.([\S]+)/i);
     this.setProperties({
       prefix,
       extension,
