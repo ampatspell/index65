@@ -145,13 +145,36 @@ valdis-130-037.jpg
 
         /images/{image}
           identifier: number
+          storage: {
+            original: {
+              size : {
+                width: number
+                height: number
+              }
+              url: string
+            },
+            200x200: {
+              size: {
+                width: number,
+                height: number
+              },
+              url: string
+            }
+            1024x1024: {
+              size: {
+                width: number,
+                height: number
+              },
+              url: string
+            }
+          }
 ```
 
 ```
 /images/{source}/{collection}/{group}/{image}
   * original
-  * 1024x1024 (jpeg)
-  * 200x200 (jpeg)
+  * 1024 (jpeg)
+  * 200 (jpeg)
 ```
 
 ## TODO
