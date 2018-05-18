@@ -22,7 +22,10 @@ export default app => {
       let names = Object.keys(data.storage || {});
 
       let bucket = app.bucket;
-      let files = names.map(name => bucket.file(`images/${source}/${collection}/${group}/${image}/${name}`));
+      let files = names.map(name => {
+        let [ first ] = name.split('x');
+        return bucket.file(`images/${source}/${collection}/${group}/${image}/${first}`);
+      });
 
       await deleteFiles(files);
     });

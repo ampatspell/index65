@@ -78,8 +78,8 @@ describe('trigger / image', () => {
       };
       this.insert = () => Promise.all([
         this.upload('original'),
-        this.upload('1024x1024'),
-        this.upload('200x200')
+        this.upload('1024'),
+        this.upload('200')
       ]);
 
       this.snapshot = () => this.test.firestore.makeDocumentSnapshot({
@@ -97,7 +97,7 @@ describe('trigger / image', () => {
         let [ exists ] = await this.file(name).exists();
         return exists;
       };
-      this.allExists = async => Promise.all([ 'original', '200x200', '1024x1024' ].map(async name => {
+      this.allExists = async => Promise.all([ 'original', '200', '1024' ].map(async name => {
         let exists = await this.exists(name);
         return { exists, name };
       }));
@@ -107,8 +107,8 @@ describe('trigger / image', () => {
       await this.insert();
       assert.deepEqual(await this.allExists(), [
         { exists: true, name: 'original' },
-        { exists: true, name: '200x200' },
-        { exists: true, name: '1024x1024' }
+        { exists: true, name: '200' },
+        { exists: true, name: '1024' }
       ]);
 
       let snapshot = this.snapshot();
@@ -123,19 +123,19 @@ describe('trigger / image', () => {
 
       assert.deepEqual(await this.allExists(), [
         { exists: false, name: 'original' },
-        { exists: false, name: '200x200' },
-        { exists: false, name: '1024x1024' }
+        { exists: false, name: '200' },
+        { exists: false, name: '1024' }
       ]);
     });
 
     it('ignores missing files', async () => {
       await this.insert();
-      await this.file('200x200').delete();
+      await this.file('200').delete();
 
       assert.deepEqual(await this.allExists(), [
         { exists: true, name: 'original' },
-        { exists: false, name: '200x200' },
-        { exists: true, name: '1024x1024' }
+        { exists: false, name: '200' },
+        { exists: true, name: '1024' }
       ]);
 
       let snapshot = this.snapshot();
@@ -150,8 +150,8 @@ describe('trigger / image', () => {
 
       assert.deepEqual(await this.allExists(), [
         { exists: false, name: 'original' },
-        { exists: false, name: '200x200' },
-        { exists: false, name: '1024x1024' }
+        { exists: false, name: '200' },
+        { exists: false, name: '1024' }
       ]);
     });
 
