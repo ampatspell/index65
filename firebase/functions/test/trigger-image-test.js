@@ -68,4 +68,93 @@ describe('trigger / image', () => {
 
   });
 
+  describe('onDelete', () => {
+
+    beforeEach(() => {
+      this.upload = async name => {
+        name = `images/valdis/35mm/100/10/${name}`;
+        let file = this.admin.bucket.file(name);
+        await file.save(`${name} content`, { contentType: 'text/plain' });
+      };
+      this.insert = () => Promise.all([
+        this.upload('original'),
+        this.upload('1024'),
+        this.upload('200')
+      ]);
+
+      this.snapshot = () => this.test.firestore.makeDocumentSnapshot({
+        storage: {
+          '1024x1024': {},
+          '200x200': {},
+          'original': {}
+        }
+      }, 'sources/valdis/collections/35mm/groups/100/images/10');
+
+      this.onDelete = this.test.wrap(this.app.triggers.image.onDelete);
+
+      this.file = name => this.admin.bucket.file(`images/valdis/35mm/100/10/${name}`);
+      this.exists = async name => {
+        let [ exists ] = await this.file(name).exists();
+        return exists;
+      };
+      this.allExists = async => Promise.all([ 'original', '200', '1024' ].map(async name => {
+        let exists = await this.exists(name);
+        return { exists, name };
+      }));
+    });
+
+    it('deletes original and scaled images', async () => {
+      await this.insert();
+      assert.deepEqual(await this.allExists(), [
+        { exists: true, name: 'original' },
+        { exists: true, name: '200' },
+        { exists: true, name: '1024' }
+      ]);
+
+      let snapshot = this.snapshot();
+      await this.onDelete(snapshot, {
+        params: {
+          source: 'valdis',
+          collection: '35mm',
+          group: '100',
+          image: '10'
+        }
+      });
+
+      assert.deepEqual(await this.allExists(), [
+        { exists: false, name: 'original' },
+        { exists: false, name: '200' },
+        { exists: false, name: '1024' }
+      ]);
+    });
+
+    it('ignores missing files', async () => {
+      await this.insert();
+      await this.file('200').delete();
+
+      assert.deepEqual(await this.allExists(), [
+        { exists: true, name: 'original' },
+        { exists: false, name: '200' },
+        { exists: true, name: '1024' }
+      ]);
+
+      let snapshot = this.snapshot();
+      await this.onDelete(snapshot, {
+        params: {
+          source: 'valdis',
+          collection: '35mm',
+          group: '100',
+          image: '10'
+        }
+      });
+
+      assert.deepEqual(await this.allExists(), [
+        { exists: false, name: 'original' },
+        { exists: false, name: '200' },
+        { exists: false, name: '1024' }
+      ]);
+    });
+
+  });
+
 });
