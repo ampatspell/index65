@@ -15,5 +15,5 @@ const buildHash = (app, hash) => Object.keys(hash).reduce((res, key) => {
 export default app => buildHash(app, {
   auth: [ 'onCreate' ],
   user: [ 'onWrite' ],
-  image: [ 'onFinalize' ]
+  image: [ 'onFinalize', 'onDelete' ]
 });
