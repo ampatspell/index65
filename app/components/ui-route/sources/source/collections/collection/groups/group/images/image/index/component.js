@@ -24,6 +24,8 @@ export default Component.extend(LeftRightMixin, {
     previous() {
       this.transitionTo(this.prev);
     },
+    enter() {
+    },
     escape() {
       this.back();
     }

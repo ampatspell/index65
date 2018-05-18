@@ -9,24 +9,35 @@ export default Component.extend(LeftRightMixin, {
 
   actions: {
     previous() {
-      this.transitionTo(this.prev);
+      this.transitionToGroup(this.prev);
     },
     next() {
-      this.transitionTo(this.next);
+      this.transitionToGroup(this.next);
+    },
+    enter() {
+      let doc = this.images.content.firstObject;
+      if(!doc) {
+        return;
+      }
+      this.transitionToImage(doc);
     },
     escape() {
       this.back();
     },
     image(doc) {
-      this.router.transitionTo('sources.source.collections.collection.groups.group.images.image', doc.id);
+      this.transitionToImage(doc);
     }
   },
 
-  transitionTo(group) {
+  transitionToGroup(group) {
     if(!group) {
       return;
     }
     this.router.transitionTo('sources.source.collections.collection.groups.group', group.id);
+  },
+
+  transitionToImage(doc) {
+    this.router.transitionTo('sources.source.collections.collection.groups.group.images.image', doc.id);
   }
 
 });

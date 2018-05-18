@@ -11,8 +11,15 @@ export default Component.extend(LeftRightMixin, {
     escape() {
       this.router.transitionTo('sources');
     },
+    enter() {
+      let doc = this.collections.content.firstObject;
+      if(!doc) {
+        return;
+      }
+      this.transitionToCollection(doc);
+    },
     collection(doc) {
-      this.router.transitionTo('sources.source.collections.collection', doc.id);
+      this.transitionToCollection(doc);
     },
     edit() {
       this.router.transitionTo('sources.source.edit', this.source.id);
@@ -20,6 +27,10 @@ export default Component.extend(LeftRightMixin, {
     add() {
       this.router.transitionTo('sources.source.collections.new', this.source.id);
     }
+  },
+
+  transitionToCollection(doc) {
+    this.router.transitionTo('sources.source.collections.collection', doc.id);
   }
 
 });

@@ -8,11 +8,18 @@ export default Component.extend(LeftRightMixin, {
     },
     next() {
     },
+    enter() {
+      let doc = this.groups.content.firstObject;
+      if(!doc) {
+        return;
+      }
+      this.transitionToGroup(doc);
+    },
     escape() {
       this.router.transitionTo('sources.source', this.source.id);
     },
     group(doc) {
-      this.router.transitionTo('sources.source.collections.collection.groups.group', doc.id);
+      this.transitionToGroup(doc);
     },
     edit() {
       this.router.transitionTo('sources.source.collections.collection.edit', this.collection.id);
@@ -20,6 +27,10 @@ export default Component.extend(LeftRightMixin, {
     upload() {
       this.router.transitionTo('sources.source.collections.collection.upload', this.collection.id);
     }
+  },
+
+  transitionToGroup(doc) {
+    this.router.transitionTo('sources.source.collections.collection.groups.group', doc.id);
   }
 
 });

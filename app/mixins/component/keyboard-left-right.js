@@ -19,8 +19,9 @@ export default Mixin.create({
     let left = create('arrowleft', 'previous');
     let right = create('arrowright', 'next');
     let esc = create('escape', 'escape');
+    let enter = create('enter', 'enter');
 
-    this._keyMacros = [ left, right, esc ];
+    this._keyMacros = [ left, right, esc, enter ];
   },
 
   willDestroyElement() {
