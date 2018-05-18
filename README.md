@@ -182,6 +182,6 @@ valdis-130-037.jpg
 * Group description, year, picture
 * Allow selected members to edit selected sources
 * Allow members to edit their `displayName`
-* Delete image
 * Delete group with images
-* Delete source
+* Delete collection including groups
+* Delete source including all nested docs
