@@ -2,8 +2,8 @@
 
 let config = require('../config');
 
-module.exports = function(environment) {
-
+const firebaseConfiguration = environment => {
+  let assert = require('assert');
   let firebaseEnvironment = process.env.FIREBASE;
   if(!firebaseEnvironment) {
     if(environment === 'production') {
@@ -13,7 +13,15 @@ module.exports = function(environment) {
     firebaseEnvironment = 'development';
   }
   let firebase = config[firebaseEnvironment];
+  assert(!!firebase, `no firebase configuration for environment '${firebaseEnvironment}'`);
+  if(!process.env._FIREBASE_LOGGED) {
+    console.log('Firebase:', firebaseEnvironment, '→', firebase.projectId);
+    process.env._FIREBASE_LOGGED = true;
+  }
+  return firebase;
+}
 
+module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'index65',
     environment,
@@ -29,7 +37,7 @@ module.exports = function(environment) {
     APP: {
     },
     index65: {
-      firebase
+      firebase: firebaseConfiguration(environment)
     }
   };
 

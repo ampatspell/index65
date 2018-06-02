@@ -1,16 +1,26 @@
 import Route from '@ember/routing/route';
 import Secured from './-secured';
-import Model, { load } from 'models/mixins/route';
+import { inline } from 'ember-cli-zuglet/experimental/route';
+import { observed } from 'ember-cli-zuglet/experimental/computed';
 
-export default Route.extend(Secured, Model, {
+export default Route.extend(Secured, {
 
   require: 'member',
 
-  model: load({
-    didCreate() {
-      this.sources = this.store.collection('sources').orderBy('name').query({ type: 'array' });
-      this.observe(this.sources, true);
+  model: inline({
+
+    sources: observed(),
+
+    prepare(route, params) {
+      let sources = this.store.collection('sources').orderBy('name').query();
+
+      this.setProperties({
+        sources
+      });
+
+      return sources.observers.promise;
     }
+
   })
 
 });

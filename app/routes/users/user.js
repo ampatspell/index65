@@ -1,15 +1,26 @@
 import Route from '@ember/routing/route';
-import Model, { load } from 'models/mixins/route';
 import Breadcrumb from 'index65/routes/-breadcrumb';
+import { inline } from 'ember-cli-zuglet/experimental/route';
+import { observed } from 'ember-cli-zuglet/experimental/computed';
 
-export default Route.extend(Model, Breadcrumb, {
+export default Route.extend(Breadcrumb, {
 
-  model: load({
+  model: inline({
+
     type: 'user',
-    didCreate(route, params) {
-      this.user = this.store.collection('users').doc(params.user_id).existing();
-      this.observe(this.user, true);
+
+    user: observed(),
+
+    prepare(route, params) {
+      let user = this.store.collection('users').doc(params.user_id).existing();
+
+      this.setProperties({
+        user
+      });
+
+      return user.observers.promise;
     }
+
   })
 
 });
