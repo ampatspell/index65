@@ -15,7 +15,7 @@ const rm = path => new Promise((resolve, reject) => {
 const getURL = async file => {
   let [ url  ] = await file.getSignedUrl({
     action: 'read',
-    expires: '01-01-2500'
+    expires: '2500-01-01'
   });
   return url;
 }
