@@ -1,22 +1,32 @@
 import Route from '@ember/routing/route';
 import Breadcrumb from 'index65/routes/-breadcrumb';
-import Model, { load } from 'models/mixins/route';
+import { inline } from 'ember-cli-zuglet/experimental/route';
+import { observed } from 'ember-cli-zuglet/experimental/computed';
 
-export default Route.extend(Breadcrumb, Model, {
+export default Route.extend(Breadcrumb, {
 
-  model: load({
+  model: inline({
 
     type: 'group',
 
-    didCreate(route, params) {
+    images: observed(),
+
+    prepare(route, params) {
       let collection = route.modelFor('sources.source.collections.collection');
-      this.source = collection.source;
-      this.collection = collection.collection;
-      this.groups = collection.groups;
-      this.group = this.groups.content.findBy('id', params.group_id);
-      this.images = this.group.ref.collection('images').orderBy('identifier').query({ type: 'array' });
-      this.observe(this.images);
+      let group = collection.groups.content.findBy('id', params.group_id);
+      let images = group.ref.collection('images').orderBy('identifier').query();
+
+      this.setProperties({
+        source: collection.source,
+        collection: collection.collection,
+        groups: collection.groups,
+        group,
+        images
+      });
+
+      return images.observers.promise;
     }
+
   })
 
 });

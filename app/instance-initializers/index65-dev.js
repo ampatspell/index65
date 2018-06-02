@@ -1,4 +1,6 @@
-const experiments = () => {
+const experiments = app => {
+  let store = app.lookup('service:store');
+  window.observed = () => store.observed.map(i => i+'');
 }
 
 export default {
