@@ -1,19 +1,4 @@
-const experiments = app => {
-  let store = app.lookup('service:store');
-
-  window.addSource = (identifier, name) => {
-    return store.doc(`sources/${identifier}`).new({ name }).save();
-  };
-
-  window.addCollection = (source, identifier, name) => {
-    return store.doc(`sources/${source}/collections/${identifier}`).new({ name }).save();
-  };
-
-  window.addGroup = (source, collection, identifier) => {
-    return store.doc(`sources/${source}/collections/${collection}/groups/${identifier}`).new({ identifier }).save();
-  };
-
-  window.observed = () => store.observed.map(model => model+'');
+const experiments = () => {
 }
 
 export default {
@@ -25,7 +10,6 @@ export default {
     if(environment !== 'development') {
       return;
     }
-    console.log('projectId:', config.index65.firebase.projectId); // eslint-disable-line no-console
     experiments(app);
   }
 };
