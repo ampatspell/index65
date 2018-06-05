@@ -15,7 +15,7 @@ const firebaseConfiguration = environment => {
   let firebase = config[firebaseEnvironment];
   assert(!!firebase, `no firebase configuration for environment '${firebaseEnvironment}'`);
   if(!process.env._FIREBASE_LOGGED) {
-    console.log('Firebase:', firebaseEnvironment, '→', firebase.projectId);
+    console.log('Firebase:', firebaseEnvironment, '→', firebase.projectId); // eslint-disable-line no-console
     process.env._FIREBASE_LOGGED = true;
   }
   return firebase;
