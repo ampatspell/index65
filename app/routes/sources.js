@@ -1,17 +1,17 @@
 import Route from '@ember/routing/route';
 import Secured from './-secured';
-import { inline } from 'ember-cli-zuglet/experimental/route';
-import { observed } from 'ember-cli-zuglet/experimental/computed';
+import model from 'ember-cli-zuglet/experimental/model/route';
+import observed from 'ember-cli-zuglet/experimental/observed';
 
 export default Route.extend(Secured, {
 
   require: 'member',
 
-  model: inline({
+  model: model({
 
     sources: observed(),
 
-    prepare(route, params) {
+    prepare() {
       let sources = this.store.collection('sources').orderBy('name').query();
 
       this.setProperties({

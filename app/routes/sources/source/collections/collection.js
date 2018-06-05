@@ -1,11 +1,11 @@
 import Route from '@ember/routing/route';
 import Breadcrumb from 'index65/routes/-breadcrumb';
-import { inline } from 'ember-cli-zuglet/experimental/route';
-import { observed } from 'ember-cli-zuglet/experimental/computed';
+import model from 'ember-cli-zuglet/experimental/model/route';
+import observed from 'ember-cli-zuglet/experimental/observed';
 
 export default Route.extend(Breadcrumb, {
 
-  model: inline({
+  model: model({
 
     type: 'collection',
 

@@ -1,13 +1,13 @@
 import Route from '@ember/routing/route';
 import Secured from './-secured';
 import Breadcrumb from 'index65/routes/-breadcrumb';
-import { inline } from 'ember-cli-zuglet/experimental/route';
+import model from 'ember-cli-zuglet/experimental/model/route';
 
 export default Route.extend(Secured, Breadcrumb, {
 
   require: 'admin',
 
-  model: inline({
+  model: model({
 
     type: 'users'
 

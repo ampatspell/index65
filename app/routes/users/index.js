@@ -1,14 +1,14 @@
 import Route from '@ember/routing/route';
-import { inline } from 'ember-cli-zuglet/experimental/route';
-import { observed } from 'ember-cli-zuglet/experimental/computed';
+import model from 'ember-cli-zuglet/experimental/model/route';
+import observed from 'ember-cli-zuglet/experimental/observed';
 
 export default Route.extend({
 
-  model: inline({
+  model: model({
 
     users: observed(),
 
-    prepare(route, params) {
+    prepare() {
       let users = this.store.collection('users').orderBy('createdAt', 'desc').query();
 
       this.setProperties({
