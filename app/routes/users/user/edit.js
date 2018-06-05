@@ -1,11 +1,11 @@
 import Route from '@ember/routing/route';
-import { inline } from 'ember-cli-zuglet/experimental/route';
+import model from 'ember-cli-zuglet/experimental/model/route';
 
 export default Route.extend({
 
-  model: inline({
+  model: model({
 
-    prepare(route, params) {
+    prepare(route) {
       let user = route.modelFor('users.user').user.ref.existing();
 
       this.setProperties({
