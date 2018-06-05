@@ -34,7 +34,7 @@
     "ember-cli-shims": "^1.2.0",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-uglify": "^2.0.0",
-    "ember-cli-zuglet": "^0.0.19",
+    "ember-cli-zuglet": "^0.1.1",
     "ember-export-application-global": "^2.0.0",
     "ember-gestures": "^1.0.0",
     "ember-hammertime": "^1.5.0",
