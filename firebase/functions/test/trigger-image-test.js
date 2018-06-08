@@ -40,7 +40,7 @@ describe('trigger / image', () => {
       let data = snapshot.data();
 
       const trimUrl = key => {
-        data.storage[key].url = data.storage[key].url.substr(0, 26);
+        data.storage[key].url = data.storage[key].url.substr(0, 51);
       };
 
       trimUrl('1024x1024');
@@ -51,15 +51,15 @@ describe('trigger / image', () => {
         identifier: 10,
         storage: {
           '1024x1024': {
-            url: 'https://storage.googleapis',
+            url: 'https://firebasestorage.googleapis.com/v0/b/index65',
             size: { width: 714, height: 1024 }
           },
           original: {
-            url: 'https://storage.googleapis',
+            url: 'https://firebasestorage.googleapis.com/v0/b/index65',
             size: { height: 3623, width: 2527 }
           },
           '200x200': {
-            url: 'https://storage.googleapis',
+            url: 'https://firebasestorage.googleapis.com/v0/b/index65',
             size: { width: 139, height: 200 }
           }
         }

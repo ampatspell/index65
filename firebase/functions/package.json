@@ -15,7 +15,8 @@
     "firebase-functions": "^1.0.4",
     "murl": "^0.4.1",
     "sharp": "^0.20.3",
-    "tempy": "^0.2.1"
+    "tempy": "^0.2.1",
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
     "firebase-functions-test": "^0.1.2",

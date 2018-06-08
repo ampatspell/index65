@@ -2,6 +2,7 @@ import path from 'path';
 import { file as tempy } from 'tempy';
 import { unlink } from 'fs';
 import sharp from 'sharp';
+import { getDownloadURL } from '../../util/download-tokens';
 
 const rm = path => new Promise((resolve, reject) => {
   unlink(path, err => {
@@ -11,14 +12,6 @@ const rm = path => new Promise((resolve, reject) => {
     return resolve();
   });
 });
-
-const getURL = async file => {
-  let [ url ] = await file.getSignedUrl({
-    action: 'read',
-    expires: '2500-01-01'
-  });
-  return url;
-}
 
 const getSize = async tmp => {
   let meta = await sharp(tmp).metadata();
@@ -55,7 +48,7 @@ export default async (app, opts) => {
         destination,
         metadata: {
           contentType: 'image/jpg',
-          cacheControl: 'max-age=21600'
+          cacheControl: 'max-age=21600',
         }
       });
       return file;
@@ -69,13 +62,13 @@ export default async (app, opts) => {
     await rm(tmp);
 
     response[`${size}x${size}`] = {
-      url:  await getURL(file),
+      url:  await getDownloadURL(file),
       size: metadata
     };
   }));
 
   await Promise.all([
-    getURL(original.file),
+    getDownloadURL(original.file),
     getSize(original.tmp)
   ]).then(([ url, size ]) => response.original = { url, size });
 
