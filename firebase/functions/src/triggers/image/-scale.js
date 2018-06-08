@@ -13,7 +13,7 @@ const rm = path => new Promise((resolve, reject) => {
 });
 
 const getURL = async file => {
-  let [ url  ] = await file.getSignedUrl({
+  let [ url ] = await file.getSignedUrl({
     action: 'read',
     expires: '2500-01-01'
   });
