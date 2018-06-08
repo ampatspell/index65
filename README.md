@@ -4,11 +4,11 @@ Scanned negatives publishing app.
 
 > [Ember.js](https://emberjs.com/) & [Firebase](https://firebase.google.com/) using [ember-cli-zuglet](https://github.com/ampatspell/ember-cli-zuglet). A reimplementation of my [CouchDB-based index65](https://bitbucket.org/ampatspell/index65/src/default/).
 
+> [Demo site](https://index65-dev.firebaseapp.com) Use `zeeba@gmail.com` / `hello-world` to sign-in (read-only member)
+
 ![](https://raw.githubusercontent.com/ampatspell/index65/master/docs/screenshot-2.png)
 
 ![](https://raw.githubusercontent.com/ampatspell/index65/master/docs/screenshot-1.png)
-
-[index65-dev demo site](https://index65-dev.firebaseapp.com) zeeba@gmail.com / hello-world
 
 ## Installation
 
