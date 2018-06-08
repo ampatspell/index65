@@ -33,3 +33,6 @@ firebase-debug.log
 /firebase/service-account-key.json
 
 /config.js
+
+/firebase/admin/node_modules
+/firebase/admin/index65-prod-firebase-adminsdk-qcjza-21dd271e8f.json
