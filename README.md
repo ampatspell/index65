@@ -16,16 +16,6 @@ Scanned negatives publishing app.
 * Enable Storage
 * Enable Firestore in Database section
 * Authentication → Sign-in Method → Enable Email/Password
-* Project Settings → Users and Permissions → Advanced permission settings
-  * Click edit on `<app-id>@appspot.gserviceaccount.com`
-  * Add another role
-  * Find "Service account token creator"
-  * Save
-* Open `https://console.developers.google.com/apis/dashboard`
-  * Select your firebase project on the top
-  * Click "Enable APIs and Services"
-  * Search for "Identity and Access Management (IAM) API"
-  * Enable
 
 ### Configuration
 
