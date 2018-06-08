@@ -8,6 +8,8 @@ Scanned negatives publishing app.
 
 ![](https://raw.githubusercontent.com/ampatspell/index65/master/docs/screenshot-1.png)
 
+[index65-dev demo site](https://index65-dev.firebaseapp.com) zeeba@gmail.com / hello-world
+
 ## Installation
 
 ### Firebase
